@@ -40,7 +40,7 @@ class Cpembeli extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nama_pembeli'  => 'required|regex:/^[\pL\s]+$/u',
+            'nama'  => 'required|regex:/^[\pL\s]+$/u',
         ]);
 
         $pembeli = Mpembeli::findOrFail($id);
@@ -52,7 +52,13 @@ class Cpembeli extends Controller
         $pembeli->tanggal_lahir	  = $request->tanggal_lahir;
         $pembeli->save();
 
-    return redirect()->route('pembeli.tampilkan')->with('Sukses', 'Berhasil tersimpan');
+    return redirect()->route('pembeli.tampilan')->with('Sukses', 'Berhasil tersimpan');
+    }
+    public function hapus($id)
+    {
+        $pembeli = Mpembeli::findOrFail($id);
+        $pembeli->delete();
+        return redirect()->route('pembeli.tampilan')->with('Berhasil', 'Berhasil tersimpan');
     }
 
 
