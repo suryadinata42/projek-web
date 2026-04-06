@@ -17,5 +17,6 @@
     <br>
 
     <button type="submit">SAVE</button>
-    <a href="{{ route('barang.tampilkan') }}">RESET</button>
+    <a href="{{ route('barang.tampilkan') }}">Kembali</button>
 </form>
+</body>
