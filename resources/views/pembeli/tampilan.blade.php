@@ -26,7 +26,7 @@
                <td>
                <form action="{{ route('pembeli.hapus', $d->id) }}" method="POST" 
                onsubmit="return confirm('Yakin mau menghapus data ini?');">
-                  @csrf
+                  <!-- @csrf -->
                   @method('DELETE')
                   <a href="{{ route('pembeli.ubah', $d->id) }}">Edit</a>
                   <button type="submit" class="btn btn-danger">

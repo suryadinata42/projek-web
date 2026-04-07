@@ -1,5 +1,5 @@
 <form method="POST" action="{{ route('suplier.update', $sup->id_suplier) }}">
-    @csrf
+    <!-- @csrf -->
     @method('PUT')
     ID Suplier :
     <input type="text" name="id_suplier" required readonly value="{{ old('id_suplier', $sup->id_suplier) }}">

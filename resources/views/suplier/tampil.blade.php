@@ -24,7 +24,7 @@
                 <td>
                     <form method="POST" action="{{ route('suplier.hapus', $d->id_suplier) }}" 
                     onsubmit="return confirm('Yakin mau menghapus data ini?');">
-                        @csrf
+                        <!-- @csrf -->
                         @method('DELETE')
                         <a href="{{ route('suplier.ubah', $d->id_suplier) }}">Edit</a>
                         <button type="submit">Hapus</button>

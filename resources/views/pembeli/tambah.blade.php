@@ -1,5 +1,5 @@
 <form method="POST" action="{{ route('pembeli.simpan') }}">
-    @csrf
+    <!-- @csrf -->
     ID Pembeli :
     <input type="text" name="id_pembeli" required>
     <br>

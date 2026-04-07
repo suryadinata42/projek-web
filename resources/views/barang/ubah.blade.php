@@ -1,5 +1,5 @@
 <form method="POST" action="{{ route('barang.update', $barang->id) }}">
-    @csrf
+    <!-- @csrf -->
     @method('PUT')
     ID Barang :
     <input type="text" name="id_barang" required readonly value="{{ old('id_barang', $barang->id_barang) }}">
