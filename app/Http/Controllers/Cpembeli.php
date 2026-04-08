@@ -17,8 +17,9 @@ class Cpembeli extends Controller
     public function simpan(Request $request)
     {
         $request->validate([
-            'id_pembeli'=> 'required|string|max:15|unique:pembeli,id_pembeli',
-            'nama' => 'required|regex:/^[\pL\s]+$/u',
+            'id_pembeli'=> 'required|string|max:6|unique:pembeli,id_pembeli',
+            'nama'  => 'required|min:3|regex:/^[\pL\s]+$/u',
+            'kode_pos'=> 'required|numeric',
         ]);
 
         $pembeli = new Mpembeli();
@@ -40,7 +41,8 @@ class Cpembeli extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nama'  => 'required|regex:/^[\pL\s]+$/u',
+            'nama'  => 'required|min:3|regex:/^[\pL\s]+$/u',
+            'kode_pos'=> 'required|numeric',
         ]);
 
         $pembeli = Mpembeli::findOrFail($id);

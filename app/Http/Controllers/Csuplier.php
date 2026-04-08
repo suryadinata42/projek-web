@@ -19,7 +19,9 @@ class Csuplier extends Controller
     public function simpan(Request $request)
     {
         $request->validate([
-            'id_suplier'    => 'required|max:15|unique:suplier,id_suplier',
+            'id_suplier'    => 'required|max:6|unique:suplier,id_suplier',
+            'nama'  => 'required|min:3|regex:/^[\pL\s]+$/u',
+            'kode_pos'=> 'required|numeric',
         ]);
 
         Msuplier::create([
@@ -39,6 +41,10 @@ class Csuplier extends Controller
     }
     public function update(Request $request, $id_suplier)
     {
+        $request -> validate([
+            'nama'=> 'required|string|min:6|unique:barang,id_barang',
+            'kode_pos'=> 'required|numeric',
+        ]);
         $suplier = Msuplier::where('id_suplier', $id_suplier)->first();
 
         $suplier->nama      = $request->nama;

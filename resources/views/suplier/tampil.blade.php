@@ -1,10 +1,29 @@
-<a href="{{ route('suplier.tambah') }}">Tambah Data</a>
-<body style="font-family:Helvetica">
-    <table style="width:100%">
+@extends('menu')
+
+@section('konten')
+<style>
+
+    .custom-font {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+
+    .custom-font label {
+        font-weight: 600;
+        margin-bottom: 5px;
+    }
+</style>
+<div class="card">
+    <div class="card-header">
+        <b>Data Suplier</b>
+    </div>
+    
+    <div class="card-body">
+        <a href="{{ route('suplier.tambah') }}" class="btn btn-primary mb-3">Tambah Data</a>
+    <table class="table table-bordered" style="width:100%; font-family:Helvetica">
         <thead>
             <tr>
                 <th>No</th>
-                <th>ID SUplier</th>
+                <th>ID Suplier</th>
                 <th>Nama Suplier</th>
                 <th>ALamat Suplier</th>
                 <th>Kode Pos</th>
@@ -24,14 +43,16 @@
                 <td>
                     <form method="POST" action="{{ route('suplier.hapus', $d->id_suplier) }}" 
                     onsubmit="return confirm('Yakin mau menghapus data ini?');">
-                        <!-- @csrf -->
+                        @csrf
                         @method('DELETE')
-                        <a href="{{ route('suplier.ubah', $d->id_suplier) }}">Edit</a>
-                        <button type="submit">Hapus</button>
+                        <a href="{{ route('suplier.ubah', $d->id_suplier) }}" class="btn btn-warning btn-sm">Edit</a>
+                        <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
                     </form>
                 </td>
             </tr>
             @endforeach
         </tbody>
     </table>
-</body>
+    </div>
+</div>
+@endsection
