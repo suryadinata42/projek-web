@@ -1,17 +1,5 @@
-@extends('menu')
-
+@extends('layout.menu')
 @section('konten')
-<style>
-
-    .custom-font {
-        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    }
-
-    .custom-font label {
-        font-weight: 600;
-        margin-bottom: 5px;
-    }
-</style>
 <div class="card">
     <div class="card-header">
         <b>Data Suplier</b>

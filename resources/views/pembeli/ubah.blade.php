@@ -1,4 +1,4 @@
-@extends('menu')
+@extends('layout.menu')
 @section('konten')
 <style>
     .custom-font {

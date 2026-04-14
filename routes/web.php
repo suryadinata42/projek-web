@@ -6,8 +6,12 @@ use App\Http\Controllers\Cpembeli;
 use App\Http\Controllers\Csuplier;
 
 Route::get('/', function () {
-    return view('dashboard');
-}) ->name('beranda');
+    return view('layout.menu');
+}) ->name('home');
+
+Route::get('/dashboard', function () {
+    return view('home'); 
+})->name('dashboard');
 
 // Router buat barang
 Route::get('/barang', [Cbarang::class, 'tampilkan'])->name('barang.tampilkan');
