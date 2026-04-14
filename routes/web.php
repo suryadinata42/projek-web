@@ -9,10 +9,6 @@ Route::get('/', function () {
     return view('layout.menu');
 }) ->name('home');
 
-Route::get('/dashboard', function () {
-    return view('home'); 
-})->name('dashboard');
-
 // Router buat barang
 Route::get('/barang', [Cbarang::class, 'tampilkan'])->name('barang.tampilkan');
 Route::get('/barang/tambah', [Cbarang::class, 'tambah'])->name('barang.tambah');

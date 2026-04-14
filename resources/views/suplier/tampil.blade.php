@@ -7,7 +7,7 @@
     
     <div class="card-body">
         <a href="{{ route('suplier.tambah') }}" class="btn btn-primary mb-3">Tambah Data</a>
-    <table class="table table-bordered" style="width:100%; font-family:Helvetica">
+    <table class="table table-bordered table-hover" style="width:100%; font-family:Helvetica">
         <thead>
             <tr>
                 <th>No</th>
