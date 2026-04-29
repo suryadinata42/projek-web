@@ -8,6 +8,7 @@ class Csuplier extends Controller
 {
     public function tampil()
     {
+        $judul = 'Data suplier';     
         $suplier = Msuplier::all();
         return view("suplier.tampil", compact("suplier"));
     }

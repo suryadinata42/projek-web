@@ -2,12 +2,21 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Cbarang;
+use App\Http\Controllers\Cdashboard;
 use App\Http\Controllers\Cpembeli;
+use App\Http\Controllers\Cpembelian;
 use App\Http\Controllers\Csuplier;
+use App\Http\Controllers\Cpesanan;
 
 Route::get('/', function () {
-    return view('layout.menu');
+    return view('welcome');
+});
+
+Route::get('/home', function () {
+    return view('welcome');
 }) ->name('home');
+// Router buat Dashboard
+Route::get('/home', [Cdashboard::class, 'tampil'])->name('home');
 
 // Router buat barang
 Route::get('/barang', [Cbarang::class, 'tampilkan'])->name('barang.tampilkan');
@@ -33,3 +42,18 @@ route::get('/suplier/{id_suplier}/ubah', [Csuplier::class,'ubah'])->name('suplie
 route::put('/suplier/{id_suplier}/update', [Csuplier::class,'update'])->name('suplier.update');
 route::delete('/suplier/{id_suplier}/hapus', [Csuplier::class,'hapus'])->name('suplier.hapus');
 
+// router pesanan 
+Route::get('/pesanan', [Cpesanan::class, 'tampil'])->name('pesanan.tampil');
+Route::get('/pesanan/tambah', [Cpesanan::class, 'tambah'])->name('pesanan.tambah');
+Route::post('/pesanan/simpan', [Cpesanan::class, 'simpan'])->name('pesanan.simpan');
+Route::get('/pesanan/{id}/ubah', [Cpesanan::class, 'ubah'])->name('pesanan.ubah');
+Route::put('/pesanan/{id}/update', [Cpesanan::class, 'update'])->name('pesanan.update');
+Route::delete('/pesanan/{id}/hapus', [Cpesanan::class, 'hapus'])->name('pesanan.hapus');
+
+// router buat pembelian
+route::get('/pembelian', [Cpembelian::class,'tampil'])->name('pembelian.tampil');
+route::get('/pembelian/tambah', [Cpembelian::class,'tambah'])->name('pembelian.tambah');
+route::post('/pembelian/simpan', [Cpembelian::class,'simpan'])->name('pembelian.simpan');
+route::get('/pembelian/{id_pembelian}/ubah', [Cpembelian::class,'ubah'])->name('pembelian.ubah');
+route::put('/pembelian/{id_pembelian}/update', [Cpembelian::class,'update'])->name('pembelian.update');
+route::delete('/pembelian/{id_pembelian}/hapus', [Cpembelian::class,'hapus'])->name('pembelian.hapus');

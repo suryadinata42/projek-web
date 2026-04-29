@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 use App\Models\Mpembeli;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rules\Unique;
+use Symfony\Contracts\Service\Attribute\Required;
 
 class Cpembeli extends Controller
 {
     public function tampilan(){
+        $judul = 'Data pembeli';    
         $pembeli = Mpembeli::all();
         return view("pembeli.tampilan",compact("pembeli"));
     }

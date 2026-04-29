@@ -19,7 +19,7 @@
     body, h1, h2, h3, h4, h5, h6, p, span, a, div, li {
         font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
     }
-</style>
+    </style>
 </head>
 
 <body>
@@ -36,7 +36,7 @@
             <div class="dropdown dropdown-profile">
                 <a href="" class="nav-link nav-link-profile" data-toggle="dropdown">
                     <img src="img/img3.jpg" class="wd-32 rounded-circle" alt="">
-                    <span class="logged-name"><span class="hidden-xs-down">Jane Doe</span> <i class="fa fa-angle-down mg-l-3"></i></span>
+                    <span class="logged-name"><span class="hidden-xs-down">Jhon Doe</span> <i class="fa fa-angle-down mg-l-3"></i></span>
                 </a>
                 <div class="dropdown-menu wd-200">
                     <ul class="list-unstyled user-profile-nav">
@@ -96,6 +96,20 @@
                             <span>Suplier</span>
                         </a>
                     </li>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('pesanan.tampil') }}" class="nav-link">
+                            <i class="icon ion-ios-home-outline"></i>
+                            <span>Pesanan</span>
+                        </a>
+                    </li>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('pembelian.tampil') }}" class="nav-link">
+                            <i class="icon ion-ios-home-outline"></i>
+                            <span>Pembelian</span>
+                        </a>
+                    </li>
 
 
                     <!--
@@ -120,12 +134,16 @@
 
     <div class="am-mainpanel">
         <div class="am-pagetitle">
-            <h5 class="am-title">Dashboard</h5>
+            <h5 class="am-title">{{ isset($judul) ? ($judul) : '' }}</h5>         
         </div>
         <div class="am-pagebody">
 
             <!-- Isi disini ---------------------------------------- -->
-            @yield('konten')
+            <div class="card">
+                <div class="card-body">
+                    @yield('konten')
+                </div>
+            </div>
             <!-- Batas isi disini ---------------------------------- -->
 
         </div>
@@ -147,6 +165,36 @@
     <script src="js/amanda.js"></script>
     <script src="js/ResizeSensor.js"></script>
     <script src="js/dashboard.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    @if(session('status'))
+	<script>
+		Swal.fire({
+		title: "{{session('status')['judul']}}",
+		text: "{{session('status')['pesan']}}",
+		icon: "{{session('status')['icon']}}"
+		});
+	</script>
+	@endif
+
+    <script>
+        function confirmDelete(id) {
+            Swal.fire({
+                title: 'Yakin Data ini?', 
+                text: "Data yang dihapus tidak dapat dikembalikan!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6', 
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, hapus!', 
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('delete-form-' + id).submit();
+                }
+            });
+        }
+    </script>
+
 </body>
 </html>
 

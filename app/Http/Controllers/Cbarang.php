@@ -9,6 +9,7 @@ class Cbarang extends Controller
 {
     public function tampilkan()
     {
+        $judul = 'Data barang';           
         $barang = Mbarang::all();
         return view('barang.tampilkan',compact('barang'));
     }
