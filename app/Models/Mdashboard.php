@@ -23,4 +23,14 @@ class Mdashboard extends Model
 	{
 		return DB::table('suplier')->count();
 	}
+
+	public function jumlah_pesanan()
+	{
+		return DB::table('pesanan')->count();
+	}
+
+	public function jumlah_pembelian()
+	{
+		return DB::table('pembelian')->count();
+	}
 }

@@ -13,6 +13,7 @@
     <div class="card-body"></div>
     <form method="POST" action="{{ route('pembelian.update', $pembelian->id_pembelian) }}">
         @csrf
+        @method('PUT')
         Id Pembelian :
         <input type="text" name="id_pembelian" required readonly value="{{ old('id_pembelian', $pembelian->id_pembelian) }}">
         @error('id_pesanan') {{ $message }} @enderror
@@ -33,7 +34,7 @@
         <select name="nama_suplier" required>
             <option value="">Pilih</option>
             @foreach($suplier as $sup)
-            <option value="{{ $sup->id_suplier }}" {{ $sup->id_suplier === $pembelian->id_pembelian ? 'selected' : '' }}>
+            <option value="{{ $sup->id_suplier }}" {{ $sup->id_suplier === $pembelian->id_suplier ? 'selected' : '' }}>
                 {{ $sup->nama }}
             </option>
             @endforeach
@@ -51,7 +52,7 @@
         <br /><br />
 
         <button type="submit">Simpan</button>
-        <a href="{{ route('pesanan.index') }}">Kembali</a>
+        <a href="{{ route('pembelian.tampil') }}">Kembali</a>
     </div>
     </form>
 </div>

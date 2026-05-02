@@ -46,9 +46,9 @@ route::delete('/suplier/{id_suplier}/hapus', [Csuplier::class,'hapus'])->name('s
 Route::get('/pesanan', [Cpesanan::class, 'tampil'])->name('pesanan.tampil');
 Route::get('/pesanan/tambah', [Cpesanan::class, 'tambah'])->name('pesanan.tambah');
 Route::post('/pesanan/simpan', [Cpesanan::class, 'simpan'])->name('pesanan.simpan');
-Route::get('/pesanan/{id}/ubah', [Cpesanan::class, 'ubah'])->name('pesanan.ubah');
-Route::put('/pesanan/{id}/update', [Cpesanan::class, 'update'])->name('pesanan.update');
-Route::delete('/pesanan/{id}/hapus', [Cpesanan::class, 'hapus'])->name('pesanan.hapus');
+Route::get('/pesanan/{id_pesanan}/ubah', [Cpesanan::class, 'ubah'])->name('pesanan.ubah');
+Route::put('/pesanan/{id_pesanan}/update', [Cpesanan::class, 'update'])->name('pesanan.update');
+Route::delete('/pesanan/{id_pesanan}/hapus', [Cpesanan::class, 'hapus'])->name('pesanan.hapus');
 
 // router buat pembelian
 route::get('/pembelian', [Cpembelian::class,'tampil'])->name('pembelian.tampil');

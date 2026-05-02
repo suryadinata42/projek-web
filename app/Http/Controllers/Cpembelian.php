@@ -12,6 +12,7 @@ class Cpembelian extends Controller
     // Mengubah index() menjadi tampil()
     public function tampil()
     {
+        $judul = 'Data pembelian';  
         $pembelian = DB::table('pembelian')
         ->leftJoin('barang', 'pembelian.id_barang', '=', 'barang.id_barang')
         ->leftJoin('suplier', 'pembelian.id_suplier', '=', 'suplier.id_suplier')
@@ -48,7 +49,7 @@ class Cpembelian extends Controller
         $pembelian = Mpembelian::where('id_pembelian', $id_pembelian)->first();
         $barang = DB::table('barang')->get();
         $suplier = DB::table('suplier')->get();
-        return view('id_pembelian.ubah', compact('pembelian', 'barang', 'suplier'));
+        return view('pembelian.ubah', compact('pembelian', 'barang', 'suplier'));
     }
 
     public function update(Request $request, $id_pembelian)

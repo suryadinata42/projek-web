@@ -3,15 +3,15 @@
 @section('konten')
 <div class="card">
     <div class="card-header">
-        <b>Edit Data Pesanan</b>
+        <b>Tambah Data Pesanan</b>
     </div>
     <div class="card-body">
-        
-        {{-- Menampilkan pesan error jika ada --}}
-        <form method="POST" action="{{ route('pesanan.update', $pesanan->id_pesanan) }}">
+    
+        {{-- Form Tambah Data --}}
+        <form method="POST" action="{{ route('pesanan.simpan') }}">
             @csrf
             Id Pesanan :
-            <input type="text" name="id_pesanan" required readonly value="{{ old('id_pesanan', $pesanan->id_pesanan) }}">
+            <input type="text" name="id_pesanan" required>
             @error('id_pesanan') {{ $message }} @enderror
             <br />
 
@@ -19,7 +19,7 @@
             <select name="nama_barang" required>
                 <option value="">Pilih</option>
                 @foreach($barang as $brg)
-                <option value="{{ $brg->id_barang }}" {{ $brg->id_barang === $pesanan->id_barang ? 'selected' : '' }}>
+                <option value="{{ $brg->id_barang }}">
                     {{ $brg->nama }}
                 </option>
                 @endforeach
@@ -30,7 +30,7 @@
             <select name="nama_pembeli" required>
                 <option value="">Pilih</option>
                 @foreach($pembeli as $pem)
-                <option value="{{ $pem->id_pembeli }}" {{ $pem->id_pembeli === $pesanan->id_pelanggan ? 'selected' : '' }}>
+                <option value="{{ $pem->id_pembeli }}">
                     {{ $pem->nama }}
                 </option>
                 @endforeach
@@ -38,20 +38,18 @@
             <br />
 
             Jumlah :
-            <input type="number" name="qty" required value="{{ old('qty', $pesanan->qty) }}">
+            <input type="number" name="qty" required>
             @error('qty') {{ $message }} @enderror
             <br />
 
             Tgl Pesan :
-            <input type="date" name="tgl_pesan" required value="{{ old('tgl_pesan', $pesanan->tgl_pesan) }}">
+            <input type="date" name="tgl_pesan" required>
             @error('tgl_pesan') {{ $message }} @enderror
             <br /><br />
 
             <button type="submit">Simpan</button>
             <a href="{{ route('pesanan.tampil') }}">Kembali</a>
         </form>
-
-        
     </div>
 </div>
 @endsection

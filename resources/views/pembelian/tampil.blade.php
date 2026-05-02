@@ -8,11 +8,11 @@
 
 <div class="card">
     <div class="card-header">
-        <b>Tambah Data Barang</b>
+        <b>Data Pembelian</b>
     </div>
     <div class="card-body">
-        <a href="{{ route('pembelian.tambah') }}">Tambah Data</a>
-        <table style="width:100%">
+        <a href="{{ route('pembelian.tambah') }}" class="btn btn-primary mb-3">Tambah Data</a>
+        <table class="table table-bordered table-hover" style="width:100%; font-family:Helvetica">
             <thead>
                 <tr>
                     <th>No</th>
@@ -40,8 +40,8 @@
                         onsubmit="return confirm('Yakin ingin menghapus data ini?');">
                             @csrf
                             @method('DELETE')
-                            <a href="{{ route('pembelian.ubah', $d->id_pembelian) }}">Edit</a>
-                            <button type="submit">Hapus</button>
+                            <a href="{{ route('pembelian.ubah', $d->id_pembelian) }}" class="btn btn-warning btn-sm">Edit</a>
+                            <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
                         </form>
                     </td>
                 </tr>
