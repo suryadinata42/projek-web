@@ -7,6 +7,7 @@ use App\Http\Controllers\Cpembeli;
 use App\Http\Controllers\Cpembelian;
 use App\Http\Controllers\Csuplier;
 use App\Http\Controllers\Cpesanan;
+use App\Http\Controllers\Clogin;
 
 Route::get('/', function () {
     return view('welcome');
@@ -17,6 +18,26 @@ Route::get('/home', function () {
 }) ->name('home');
 // Router buat Dashboard
 Route::get('/home', [Cdashboard::class, 'tampil'])->name('home');
+
+// routing buat login 
+Route::middleware(['guest'])->group(function () {
+    Route::get('/login', [Clogin::class, 'tampil'])->name('login');
+    Route::post('/login', [Clogin::class, 'login_proses'])->name('login_proses');
+});
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/', function () {
+        return view('welcome');
+    })->name('home');
+
+    Route::get('/logout', [Clogin::class, 'logout'])->name('logout');
+    Route::get('/dashboard', [Cdashboard::class, 'tampil'])->name('dashboard');
+    // Route::resource('/siswa', Csiswa::class);
+}); // <-- SEBELUMNYA KAMU KURANG BAGIAN INI
+
+
+
+
 
 // Router buat barang
 Route::get('/barang', [Cbarang::class, 'tampilkan'])->name('barang.tampilkan');
