@@ -33,7 +33,7 @@ class Csuplier extends Controller
             'kota'          => $request->kota,
         ]);
 
-        return redirect()->route('suplier.tampil')->with('Berhasil', 'Data tersimpan');
+        return redirect()->route('suplier.tampil')->with('status', ['judul' => 'Berhasil', 'pesan' => 'Data berhasil disimpan', 'icon' => 'success']);
     }
     public function ubah($id_suplier)
     {
@@ -54,14 +54,14 @@ class Csuplier extends Controller
         $suplier->kota      = $request->kota;
         $suplier->save();
 
-        return redirect()->route('suplier.tampil')->with('Berhasil', 'Data tersimpan');
+        return redirect()->route('suplier.tampil')->with('status', ['judul' => 'Berhasil', 'pesan' => 'Data berhasil disimpan', 'icon' => 'success']);
     }
 
     public function hapus($id_suplier)
     {
         $suplier = Msuplier::where('id_suplier', $id_suplier)->first();
         $suplier->delete();
-        return redirect()->route('suplier.tampil')->with('Berhasil', 'Data terhapus');
+        return redirect()->route('suplier.tampil')->with('status', ['judul' => 'Berhasil', 'pesan' => 'Data berhasil disimpan', 'icon' => 'success']);
     }
 }
 

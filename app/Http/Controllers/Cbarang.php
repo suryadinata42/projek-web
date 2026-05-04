@@ -34,7 +34,8 @@ class Cbarang extends Controller
         $barang->harga_jual	        = $request->harga_jual;
         $barang->save();
 
-        return redirect()->route('barang.tampilkan')->with('Berhasil', 'Berhasil tersimpan');
+        return redirect()->route('barang.tampilkan')->with('status', ['judul' => 'Berhasil', 'pesan' => 'Data berhasil disimpan', 'icon' => 'success']);
+
 
     }
 
@@ -60,7 +61,7 @@ class Cbarang extends Controller
         $barang->harga_jual	        = $request->harga_jual;
         $barang->save();
 
-        return redirect()->route('barang.tampilkan')->with('Berhasil', 'Berhasil tersimpan');
+        return redirect()->route('barang.tampilkan')->with('status', ['judul' => 'Berhasil', 'pesan' => 'Data berhasil disimpan', 'icon' => 'success']);
     }
 
     /**
@@ -70,7 +71,7 @@ class Cbarang extends Controller
     {
         $barang = Mbarang::findOrFail($id);
         $barang->delete();
-        return redirect()->route('barang.tampilkan')->with('Sukses', 'Data Terhapus');
+        return redirect()->route('barang.tampilkan')->with('status', ['judul' => 'Berhasil', 'pesan' => 'Data berhasil disimpan', 'icon' => 'success']);
 
     }
 }

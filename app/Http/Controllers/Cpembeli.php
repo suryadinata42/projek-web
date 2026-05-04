@@ -34,7 +34,7 @@ class Cpembeli extends Controller
         $pembeli->tanggal_lahir	= $request->tanggal_lahir;
         $pembeli->save();
 
-        return redirect()->route('pembeli.tampilan')->with('Berhasil', 'Berhasil tersimpan');
+        return redirect()->route('pembeli.tampilan')->with('status', ['judul' => 'Berhasil', 'pesan' => 'Data berhasil disimpan', 'icon' => 'success']);
     }
     public function ubah($id)
     {
@@ -57,13 +57,13 @@ class Cpembeli extends Controller
         $pembeli->tanggal_lahir	  = $request->tanggal_lahir;
         $pembeli->save();
 
-    return redirect()->route('pembeli.tampilan')->with('Sukses', 'Berhasil tersimpan');
+    return redirect()->route('pembeli.tampilan')->with('status', ['judul' => 'Berhasil', 'pesan' => 'Data berhasil disimpan', 'icon' => 'success']);
     }
     public function hapus($id)
     {
         $pembeli = Mpembeli::findOrFail($id);
         $pembeli->delete();
-        return redirect()->route('pembeli.tampilan')->with('Berhasil', 'Berhasil tersimpan');
+        return redirect()->route('pembeli.tampilan')->with('status', ['judul' => 'Berhasil', 'pesan' => 'Data berhasil disimpan', 'icon' => 'success']);
     }
 
 

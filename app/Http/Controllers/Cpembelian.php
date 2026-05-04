@@ -30,7 +30,7 @@ class Cpembelian extends Controller
     public function simpan(Request $request)
     {
         $request->validate([
-            'id_pembelian'    => 'required|max:15|unique:pesanan,id_pesanan'
+            'id_pembelian'    => 'required|max:15|unique:pembalian,id_pembelian'
         ]);
 
         $pembelian = new Mpembelian;
@@ -41,7 +41,7 @@ class Cpembelian extends Controller
         $pembelian->tgl     = $request->tgl;
         $pembelian->save();
 
-        return redirect()->route('pembelian.tampil')->with('Sukses', 'Data tersimpan');
+        return redirect()->route('pembelian.tampil')->with('status', ['judul' => 'Berhasil', 'pesan' => 'Data berhasil disimpan', 'icon' => 'success']);
     }
 
     public function ubah($id_pembelian)
@@ -64,12 +64,12 @@ class Cpembelian extends Controller
             $pembelian->save();
         }
 
-        return redirect()->route('pembelian.tampil')->with('Sukses', 'Data tersimpan');
+        return redirect()->route('pembelian.tampil')->with('status', ['judul' => 'Berhasil', 'pesan' => 'Data berhasil disimpan', 'icon' => 'success']);
     }
     public function hapus($id_pembelian)
     {
         $pembelian = Mpembelian::where('id_pembelian', $id_pembelian)->first();
         $pembelian->delete();
-        return redirect()->route('pembelian.tampil')->with('Sukses', 'Data tersimpan');
+        return redirect()->route('pembelian.tampil')->with('status', ['judul' => 'Berhasil', 'pesan' => 'Data berhasil disimpan', 'icon' => 'success']);
     }
 }

@@ -42,7 +42,7 @@ class Cpesanan extends Controller
         $pesanan->tgl_pesan     = $request->tgl_pesan;
         $pesanan->save();
 
-        return redirect()->route('pesanan.tampil')->with('Sukses', 'Data tersimpan');
+        return redirect()->route('pesanan.tampil')->with('status', ['judul' => 'Berhasil', 'pesan' => 'Data berhasil disimpan', 'icon' => 'success']);
     }
     public function ubah($id_pesanan)
     {
@@ -62,13 +62,13 @@ class Cpesanan extends Controller
             $pesanan->save();
         }
 
-        return redirect()->route('pesanan.tampil')->with('Sukses', 'Data tersimpan');
+        return redirect()->route('pesanan.tampil')->with('status', ['judul' => 'Berhasil', 'pesan' => 'Data berhasil disimpan', 'icon' => 'success']);
     }
     public function hapus($id_pesanan)
     {
         $pesanan = Mpesanan::where('id_pesanan', $id_pesanan)->first();
         $pesanan->delete();
-        return redirect()->route('pesanan.tampil')->with('Sukses', 'Data tersimpan');
+        return redirect()->route('pesanan.tampil')->with('status', ['judul' => 'Berhasil', 'pesan' => 'Data berhasil disimpan', 'icon' => 'success']);
     }
 
 }

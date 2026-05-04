@@ -51,7 +51,7 @@
     <div class="am-sideleft">
         <ul class="nav am-sideleft-tab">
             <li class="nav-item">
-                <a href="#" class="nav-link non active"><i class="icon ion-ios-home-outline tx-24"></i></a>
+                <a href="{{ route('home') }}" class="nav-link"><i class="icon ion-ios-home-outline tx-24"></i></a>
             </li>
             <li class="nav-item">
                 <a href="#" class="nav-link non"></a>
@@ -72,40 +72,40 @@
         <div class="tab-content">
             <div id="mainMenu" class="tab-pane active">
                 <ul class="nav am-sideleft-menu">
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a href="{{ route('home') }}" class="nav-link">
                             <i class="icon ion-ios-home-outline"></i>
                             <span>Dashboard</span>
                         </a>
-                    </li>
+                    </li> -->
                     <li class="nav-item">
-                        <a href="{{ route('barang.tampilkan') }}" class="nav-link">
+                        <a href="{{ route('barang.tampilkan') }}" class="nav-link {{ Request::is('barang') ? 'active' : '' }}">
                             <i class="icon ion-ios-home-outline"></i>
                             <span>Barang</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('pembeli.tampilan') }}" class="nav-link">
+                        <a href="{{ route('pembeli.tampilan') }}" class="nav-link {{ Request::is('pembeli') ? 'active' : '' }}">
                             <i class="icon ion-ios-home-outline"></i>
                             <span>Pembeli</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('suplier.tampil') }}" class="nav-link">
+                        <a href="{{ route('suplier.tampil') }}" class="nav-link {{ Request::is('suplier') ? 'active' : '' }}">
                             <i class="icon ion-ios-home-outline"></i>
                             <span>Suplier</span>
                         </a>
                     </li>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('pesanan.tampil') }}" class="nav-link">
+                        <a href="{{ route('pesanan.tampil') }}" class="nav-link {{ Request::is('pesanan') ? 'active' : '' }}">
                             <i class="icon ion-ios-home-outline"></i>
                             <span>Pesanan</span>
                         </a>
                     </li>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('pembelian.tampil') }}" class="nav-link">
+                        <a href="{{ route('pembelian.tampil') }}" class="nav-link {{ Request::is('pembelian') ? 'active' : '' }}">
                             <i class="icon ion-ios-home-outline"></i>
                             <span>Pembelian</span>
                         </a>
@@ -166,15 +166,18 @@
     <script src="js/ResizeSensor.js"></script>
     <script src="js/dashboard.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
     @if(session('status'))
-	<script>
-		Swal.fire({
-		title: "{{session('status')['judul']}}",
-		text: "{{session('status')['pesan']}}",
-		icon: "{{session('status')['icon']}}"
-		});
-	</script>
-	@endif
+    <script>
+        Swal.fire({
+        position: "top-end",
+        icon: "{{session('status')['icon']}}",
+        title: "{{session('status')['judul']}}",
+        showConfirmButton: false,
+        timer: 1500
+        });
+    </script>
+    @endif
 
     <script>
         function confirmDelete(id) {
@@ -183,7 +186,7 @@
                 text: "Data yang dihapus tidak dapat dikembalikan!",
                 icon: 'warning',
                 showCancelButton: true,
-                confirmButtonColor: '#3085d6', 
+                confirmButtonColor: '#0054fb', 
                 cancelButtonColor: '#d33',
                 confirmButtonText: 'Ya, hapus!', 
                 cancelButtonText: 'Batal'

@@ -36,18 +36,24 @@
                     <td>{{ $d->qty}}</td>
                     <td>{{ $d->tgl}}</td>
                     <td>
-                        <form method="POST" action="{{ route('pembelian.hapus', $d->id_pembelian) }}" 
-                        onsubmit="return confirm('Yakin ingin menghapus data ini?');">
+                       <form id="delete-form-{{ $d->id }}" method="POST" action="{{ route('pembelian.hapus', $d->id) }}">
                             @csrf
                             @method('DELETE')
-                            <a href="{{ route('pembelian.ubah', $d->id_pembelian) }}" class="btn btn-warning btn-sm">Edit</a>
-                            <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
+                            <a href="{{ route('pembelian.ubah', $d->id) }}" class="btn btn-success btn-sm khusus mb-1"><i class="fa fa-edit"></i></a>
+                            <button type="button" class="btn btn-danger btn-sm mb-1" 
+                            onclick="confirmDelete({{ $d->id }})" title="Hapus Data"><i class="fa fa-trash"></i></button>
                         </form>
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div> 
-</div> 
+
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+    @if(session('success'))
+    <script>
+        alert("{{ session('success') }}");
+    </script>
+    @endif
+    </div>
+</div>
 @endsection

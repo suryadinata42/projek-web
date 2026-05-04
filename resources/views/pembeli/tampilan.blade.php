@@ -41,25 +41,24 @@
                   <td>{{ $d->kode_pos }}</td>
                   <td>{{ $d->tanggal_lahir }}</td>
                   <td>
-                  <form action="{{ route('pembeli.hapus', $d->id) }}" method="POST" 
-                  onsubmit="return confirm('Yakin mau menghapus data ini?');">
-                     @csrf
-                     @method('DELETE')
-                     <a href="{{ route('pembeli.ubah', $d->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                     <button type="submit" class="btn btn-danger btn-sm">
-                           Hapus
-                     </button>
+                     <form id="delete-form-{{ $d->id }}" method="POST" action="{{ route('pembeli.hapus', $d->id) }}">
+                        @csrf
+                        @method('DELETE')
+                        <a href="{{ route('pembeli.ubah', $d->id) }}" class="btn btn-success btn-sm khusus mb-1"><i class="fa fa-edit"></i></a>
+                        <button type="button" class="btn btn-danger btn-sm mb-1" 
+                        onclick="confirmDelete({{ $d->id }})" title="Hapus Data"><i class="fa fa-trash"></i></button>
                      </form>
-               </td>
-               </tr>
+
+                </td>
+            </tr>
             @endforeach
-         </tbody>
-      </table>
-      @if(session('BERHASIL'))
-      <script>
-      alert("{{ session('success') }}");
-      </script>
-      @endif
-    </div> 
-</div> 
+        </tbody>
+    </table>
+    @if(session('success'))
+    <script>
+        alert("{{ session('success') }}");
+    </script>
+    @endif
+    </div>
+</div>
 @endsection

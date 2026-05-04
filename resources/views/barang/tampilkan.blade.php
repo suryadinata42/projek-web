@@ -31,22 +31,24 @@
                     <td>{{ $d->harga_beli }}</td>
                     <td>{{ $d->harga_jual }}</td>
                     <td>
-                        <form action="{{ route('barang.hapus', $d->id) }}" method="POST" 
-                              onsubmit="return confirm('Yakin ingin menghapus data ini?');">
-                            @csrf 
-                            @method('DELETE')
-                            
-                            <a href="{{ route('barang.ubah', $d->id) }}" class="btn btn-warning btn-sm"> EDIT </a>
-                            
-                            <button type="submit" class="btn btn-danger btn-sm">
-                                HAPUS
-                            </button>
-                        </form>
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div> 
-</div> 
+                    <form id="delete-form-{{ $d->id }}" method="POST" action="{{ route('barang.hapus', $d->id) }}">
+                        @csrf
+                        @method('DELETE')
+                        <a href="{{ route('barang.ubah', $d->id) }}" class="btn btn-success btn-sm khusus mb-1"><i class="fa fa-edit"></i></a>
+                        <button type="button" class="btn btn-danger btn-sm mb-1" 
+                        onclick="confirmDelete({{ $d->id }})" title="Hapus Data"><i class="fa fa-trash"></i></button>
+                    </form>
+
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+    @if(session('success'))
+    <script>
+        alert("{{ session('success') }}");
+    </script>
+    @endif
+    </div>
+</div>
 @endsection
