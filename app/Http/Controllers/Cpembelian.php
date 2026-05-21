@@ -16,10 +16,10 @@ class Cpembelian extends Controller
         $pembelian = DB::table('pembelian')
         ->leftJoin('barang', 'pembelian.id_barang', '=', 'barang.id_barang')
         ->leftJoin('suplier', 'pembelian.id_suplier', '=', 'suplier.id_suplier')
-            ->select('pembelian.*', 'barang.nama as nama_barang', 'barang.varian', 'suplier.nama as nama_suplier')
+        ->select('pembelian.*', 'barang.nama as nama_barang', 'barang.varian', 'suplier.nama as nama_suplier')
         ->orderBy('pembelian.tgl', 'DESC')
         ->get();
-        return view('pembelian.tampil', compact('pembelian'));
+        return view('pembelian.tampil', compact('pembelian','judul'));
     }
     public function tambah()
     {
@@ -30,7 +30,7 @@ class Cpembelian extends Controller
     public function simpan(Request $request)
     {
         $request->validate([
-            'id_pembelian'    => 'required|max:15|unique:pembalian,id_pembelian'
+            'id_pembelian'    => 'required|max:15|unique:pembelian,id_pembelian'
         ]);
 
         $pembelian = new Mpembelian;

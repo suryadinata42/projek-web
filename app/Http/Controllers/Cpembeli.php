@@ -11,11 +11,12 @@ class Cpembeli extends Controller
     public function tampilan(){
         $judul = 'Data pembeli';    
         $pembeli = Mpembeli::all();
-        return view("pembeli.tampilan",compact("pembeli"));
+        return view("pembeli.tampilan",compact("pembeli",'judul'));
     }
     public function tambah()
     {
-    return view('pembeli.tambah');
+        $judul = 'Tambah Data Pembeli';
+        return view('pembeli.tambah', compact('judul'));
     }
     public function simpan(Request $request)
     {
@@ -39,7 +40,8 @@ class Cpembeli extends Controller
     public function ubah($id)
     {
         $pembeli = Mpembeli::findOrFail($id);
-        return view('pembeli.ubah', compact('pembeli'));
+        $judul = 'Ubah Data Pembeli';
+        return view('pembeli.ubah', compact('pembeli', 'judul'));
     }
     public function update(Request $request, $id)
     {

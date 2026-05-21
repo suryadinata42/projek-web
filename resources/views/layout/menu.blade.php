@@ -54,10 +54,10 @@
     <div class="am-sideleft">
         <ul class="nav am-sideleft-tab">
             <li class="nav-item">
-                <a href="{{ route('home') }}" class="nav-link"><i class="icon ion-ios-home-outline tx-24"></i></a>
+                <a href="{{ route('home') }}" class="nav-link"><i class="fa fa-home tx-24"></i></a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link non"></a>
+                <a href="{{ route('dashboard') }}" class="nav-link"><i class="fa fa-tachometer tx-24"></i></a>
             </li>
             <li class="nav-item">
                 <a href="#" class="nav-link non"></a>
@@ -83,33 +83,32 @@
                     </li> -->
                     <li class="nav-item">
                         <a href="{{ route('barang.tampilkan') }}" class="nav-link {{ Request::is('barang') ? 'active' : '' }}">
-                            <i class="icon ion-ios-home-outline"></i>
+                            <i class="fa fa-gift" style="font-size:1.2em"></i> 
                             <span>Barang</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="{{ route('pembeli.tampilan') }}" class="nav-link {{ Request::is('pembeli') ? 'active' : '' }}">
-                            <i class="icon ion-ios-home-outline"></i>
+                            <i class="fa fa-user" style="font-size:1.2em"></i>
                             <span>Pembeli</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="{{ route('suplier.tampil') }}" class="nav-link {{ Request::is('suplier') ? 'active' : '' }}">
-                            <i class="icon ion-ios-home-outline"></i>
+                            <i class="fa fa-users" style="font-size:1.2em"></i>
                             <span>Suplier</span>
                         </a>
                     </li>
-                    </li>
                     <li class="nav-item">
                         <a href="{{ route('pesanan.tampil') }}" class="nav-link {{ Request::is('pesanan') ? 'active' : '' }}">
-                            <i class="icon ion-ios-home-outline"></i>
+                            <i class="fa fa-shopping-basket" style="font-size:1.2em"></i>
                             <span>Pesanan</span>
                         </a>
                     </li>
                     </li>
                     <li class="nav-item">
                         <a href="{{ route('pembelian.tampil') }}" class="nav-link {{ Request::is('pembelian') ? 'active' : '' }}">
-                            <i class="icon ion-ios-home-outline"></i>
+                            <i class="fa fa-handshake-o" style="font-size:1.2em"></i>
                             <span>Pembelian</span>
                         </a>
                     </li>
@@ -142,11 +141,7 @@
         <div class="am-pagebody">
 
             <!-- Isi disini ---------------------------------------- -->
-            <div class="card">
-                <div class="card-body">
-                    @yield('konten')
-                </div>
-            </div>
+            @yield('konten')
             <!-- Batas isi disini ---------------------------------- -->
 
         </div>

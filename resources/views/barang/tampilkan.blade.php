@@ -2,12 +2,12 @@
 
 @section('konten')
 <div class="card">
-    <div class="card-header">
-        <b>Data Barang</b>
+    <div class="card-header bg-info text-white">
+        <i class="fa fa-gift" aria-hidden="true"></i>&nbsp; <b>Data Barang</b>
     </div>
     
     <div class="card-body">
-        <a href="{{ route('barang.tambah') }}" class="btn btn-primary mb-3">Tambah Data</a>
+        <a href="{{ route('barang.tambah') }}" class="btn btn-primary mb-3"><i class="fa fa-plus-square" aria-hidden="true"></i>&nbsp; Tambah Data</a>
 
         <table class="table table-bordered table-hover" style="width:100%; font-family:Helvetica">
             <thead> 
@@ -18,7 +18,7 @@
                     <th>Varian</th>
                     <th>Harga Beli</th>
                     <th>Harga Jual</th>
-                    <th>AKSI</th>
+                    <th style="width:100px;">AKSI</th>
                 </tr>
             </thead>
             <tbody>

@@ -1,147 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Aplikasi</title>
+  <head>
     
-    <!-- Bootstrap CSS dari CDN agar tidak perlu setting path manual -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- FontAwesome untuk Icon -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Twitter -->
+    <meta name="twitter:site" content="@themepixels">
+    <meta name="twitter:creator" content="@themepixels">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Amanda">
+    <meta name="twitter:description" content="Premium Quality and Responsive UI for Dashboard.">
+    <meta name="twitter:image" content="http://themepixels.me/amanda/img/amanda-social.png">
+
+    <!-- Facebook -->
+    <meta property="og:url" content="http://themepixels.me/amanda">
+    <meta property="og:title" content="Bracket">
+    <meta property="og:description" content="Premium Quality and Responsive UI for Dashboard.">
+
+    <meta property="og:image" content="http://themepixels.me/amanda/img/amanda-social.png">
+    <meta property="og:image:secure_url" content="http://themepixels.me/amanda/img/amanda-social.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="600">
+
+    <!-- Meta -->
+    <meta name="description" content="Premium Quality and Responsive UI for Dashboard.">
+    <meta name="author" content="ThemePixels">
+
+    <!-- vendor css -->
+    <link href="{{ asset('assets/slib/font-awesome/css/font-awesome.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/slib/Ionicons/css/ionicons.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/slib/perfect-scrollbar/css/perfect-scrollbar.css') }}" rel="stylesheet">
+
+    <!-- Amanda CSS -->
+    <link rel="stylesheet" href="{{ asset('assets/css/amanda.css') }}">
     <style>
-        body {
-            /* Warna background yang lembut */
-            background-color: #f4f7f6;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-        }
-        .login-card {
-            border: none;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            width: 100%;
-            max-width: 400px;
-        }
-        .login-header {
-            /* Gradien biru senada dengan tombol template kamu */
-            background: linear-gradient(135deg, #0054fb, #00d2ff);
-            color: white;
-            text-align: center;
-            padding: 35px 20px;
-        }
-        .login-header h3 {
-            margin: 0;
-            font-weight: 600;
-            letter-spacing: 1px;
-        }
-        .login-body {
-            padding: 40px 30px;
-            background: white;
-        }
-        .form-control {
-            border-radius: 10px;
-            padding: 12px 15px;
-            border: 1px solid #ced4da;
-            background-color: #f8f9fa;
-        }
-        .form-control:focus {
-            box-shadow: none;
-            border-color: #0054fb;
-            background-color: #ffffff;
-        }
-        .btn-login {
-            background-color: #0054fb;
-            border: none;
-            border-radius: 10px;
-            padding: 12px;
-            width: 100%;
-            color: white;
-            font-weight: bold;
-            letter-spacing: 1px;
-            transition: 0.3s;
-        }
-        .btn-login:hover {
-            background-color: #003db8;
-            color: white;
-            box-shadow: 0 5px 15px rgba(0, 84, 251, 0.4);
-        }
-        .input-group-text {
-            background-color: #f8f9fa;
-            border-right: none;
-            color: #6c757d;
-            border-radius: 10px 0 0 10px;
-        }
-        .form-control.with-icon {
-            border-left: none;
-            border-radius: 0 10px 10px 0;
-        }
+        .am-signin-wrapper{
+        background-image: url("{{ asset('assets/img/b.jpg') }}");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        min-height: 100vh;
+    }
     </style>
-</head>
-<body>
+  </head>
 
-    <div class="container d-flex justify-content-center">
-        <div class="login-card">
-            <div class="login-header">
-                <i class="fa-solid fa-circle-user fa-3x mb-3"></i>
-                <h3>LOGIN SISTEM</h3>
-                <p class="mb-0 text-white-50 mt-1">Silakan masuk menggunakan akun Anda</p>
+  <body>
+
+    <div class="am-signin-wrapper">
+      <div class="am-signin-box">
+        <div class="row no-gutters">
+          <div class="col-lg-5">
+            <div>
+              <h2>Toko</h2>
+              <p>Toko Sejahtera by Ripa Sandi</p>
+
+              <hr>
+              <p>Don't have an account? <br> <a href="page-signup.html">Sign up Now</a></p>
             </div>
-            
-            <div class="login-body">
+          </div>
+          <div class="col-lg-7">
+            <h5 class="tx-gray-800 mg-b-25">Signin to Your Account</h5>
+
+            <form action="{{ route('login') }}" method="POST">
+                @csrf
                 
-                <!-- Menangkap Notifikasi Berhasil Logout dari Controller Clogin -->
-                @if(session('logout'))
-                    <div class="alert alert-success alert-dismissible fade show text-center py-2" role="alert">
-                        <i class="fa-solid fa-circle-check me-1"></i> {{ session('logout') }}
-                        <button type="button" class="btn-close py-2" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                @endif
+                <div class="form-group">
+                    <label class="form-control-label">Username:</label>
+                    <!-- Ubah type menjadi email dan name menjadi email -->
+                    <input type="text" name="username" class="form-control" placeholder="Enter your username" required>
+                </div>
 
-                <!-- Menangkap Notifikasi Error (jika username/password salah) -->
-                @if(session('error'))
-                    <div class="alert alert-danger alert-dismissible fade show text-center py-2" role="alert">
-                        <i class="fa-solid fa-circle-exclamation me-1"></i> {{ session('error') }}
-                        <button type="button" class="btn-close py-2" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                @endif
+                <div class="form-group">
+                    <label class="form-control-label">Password:</label>
+                    <input type="password" name="password" class="form-control" placeholder="Enter your password" required>
+                </div>
 
-                <!-- Form Login -->
-                <!-- Pastikan route('login.proses') sesuai dengan nama route POST di web.php kamu -->
-                <form action="{{ route('login_proses') }}" method="POST">
-                    @csrf
-                    
-                    <div class="mb-3">
-                        <label class="form-label text-muted fw-bold" style="font-size: 14px;">Username</label>
-                        <div class="input-group">
-                            <span class="input-group-text"><i class="fa-solid fa-user"></i></span>
-                            <input type="text" name="username" class="form-control with-icon" placeholder="Masukkan username..." required autofocus>
-                        </div>
-                    </div>
+                <button type="submit" class="btn btn-primary btn-block">
+                    Sign In
+                </button>
+            </form>
+          </div><!-- col-7 -->
+        </div><!-- row -->
+      </div><!-- signin-box -->
+    </div><!-- am-signin-wrapper -->
 
-                    <div class="mb-4">
-                        <label class="form-label text-muted fw-bold" style="font-size: 14px;">Password</label>
-                        <div class="input-group">
-                            <span class="input-group-text"><i class="fa-solid fa-lock"></i></span>
-                            <input type="password" name="password" class="form-control with-icon" placeholder="Masukkan password..." required>
-                        </div>
-                    </div>
+    <script src="{{ asset('assets/lib/jquery/jquery.js') }}"></script>
+    <script src="{{ asset('assets/lib/popper.js/popper.js') }}"></script>
+    <script src="{{ asset('assets/lib/bootstrap/bootstrap.js') }}"></script>
+    <script src="{{ asset('assets/lib/perfect-scrollbar/js/perfect-scrollbar.jquery.js') }}"></script>
 
-                    <button type="submit" class="btn btn-login mt-2">
-                        LOGIN SEKARANG <i class="fa-solid fa-arrow-right-to-bracket ms-1"></i>
-                    </button>
-                </form>
-                
-            </div>
-        </div>
-    </div>
-
-    <!-- Bootstrap JS untuk fitur alert close -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+    <script src="{{ asset('assets/js/amanda.js') }}"></script>
+  </body>
 </html>

@@ -1,12 +1,12 @@
 @extends('layout.menu')
 @section('konten')
 <div class="card">
-    <div class="card-header">
-        <b>Data Suplier</b>
+    <div class="card-header bg-info text-white">
+        <i class="fa fa-users" aria-hidden="true"></i>&nbsp; <b>Data Suplier</b>
     </div>
     
     <div class="card-body">
-        <a href="{{ route('suplier.tambah') }}" class="btn btn-primary mb-3">Tambah Data</a>
+        <a href="{{ route('suplier.tambah') }}" class="btn btn-primary mb-3"><i class="fa fa-plus-square" aria-hidden="true"></i>&nbsp; Tambah Data</a>
     <table class="table table-bordered table-hover" style="width:100%; font-family:Helvetica">
         <thead>
             <tr>

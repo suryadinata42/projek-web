@@ -1,36 +1,78 @@
 @extends('layout.menu')
 @section('konten')
-<div class="card">
-    <div class="card-header">
-        <b>Tambah Data Suplier</b>
+<form method="POST" action="{{ route('suplier.simpan') }}">
+    @csrf
+    <div class="row g-2 align-items-center mb-3">
+        <div class="col-sm-1">
+            <label for="id_suplier" class="col-form-label">ID Suplier</label>
+        </div>
+        <div class="col-sm-11">
+            <input type="number" name="id_suplier" id="id_suplier" class="form-control" required>
+        </div>
+        <div class="col-auto">
+            @error('id_suplier') 
+                <span class="text-danger" style="font-size: 0.9em;">{{ $message }}</span> 
+            @enderror
+        </div>
     </div>
-    <div class="card-body">
-    <form method="POST" action="{{ route('suplier.simpan') }}">
-        @csrf
-        ID Suplier :
-        <input type="text" name="id_suplier" required>
-        @error('id_suplier') {{ $message }} @enderror
-        <br>
-        Nama Suplier :
-        <input type="text" name="nama" required>
-        @error('nama') {{ $message }} @enderror
-        <br>
-        Alamat Suplier :
-        <textarea name="alamat" required></textarea>
-        @error('alamat') {{ $message }} @enderror
-        <br>
-        Kode Pos :
-        <input type="text" name="kode_pos" required>
-        @error('kode_pos') {{ $message }} @enderror
-        <br>
-        Kota :
-        <input type="text" name="kota" required>
-        @error('kota') {{ $message }} @enderror
-        <br>
+    <div class="row g-2 align-items-center mb-3">
+        <div class="col-sm-1">
+            <label for="nama" class="col-form-label">Nama</label>
+        </div>
+        <div class="col-sm-11">
+            <input type="text" name="nama" id="nama" class="form-control" required>
+        </div>
+        <div class="col-auto">
+            @error('nama') 
+                <span class="text-danger" style="font-size: 0.9em;">{{ $message }}</span> 
+            @enderror
+        </div>
+    </div>
 
-        <button type="submit">Simpan</button>
-        <a href="{{ route('suplier.tampil') }}">Kembali</a>
-    </form>
+    <div class="row g-2 align-items-center mb-3">
+        <div class="col-sm-1">
+            <label for="alamat" class="col-form-label">Alamat</label>
+        </div>
+        <div class="col-sm-11">
+            <textarea name="alamat" id="alamat" class="form-control" required></textarea>
+        </div>
+        <div class="col-auto">
+            @error('alamat') 
+                <span class="text-danger" style="font-size: 0.9em;">{{ $message }}</span> 
+            @enderror
+        </div>
     </div>
-</div>
+    <div class="row g-2 align-items-center mb-3">
+        <div class="col-sm-1">
+            <label for="kode_pos" class="col-form-label">Kode Pos</label>
+        </div>
+        <div class="col-sm-11">
+            <input type="number" name="kode_pos" id="kode_pos" class="form-control" required>
+        </div>
+        <div class="col-auto">
+            @error('kode_pos') 
+                <span class="text-danger" style="font-size: 0.9em;">{{ $message }}</span> 
+            @enderror
+        </div>
+    </div>
+    <div class="row g-2 align-items-center mb-3">
+        <div class="col-sm-1">
+            <label for="kota" class="col-form-label">Kota</label>
+        </div>
+        <div class="col-sm-11">
+            <input type="text" name="kota" id="kota" class="form-control" required>
+        </div>
+        <div class="col-auto">
+            @error('kota') 
+                <span class="text-danger" style="font-size: 0.9em;">{{ $message }}</span> 
+            @enderror
+        </div>
+    </div>
+    
+    
+    <div class="mt-4">
+        <button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp; Save</button>
+        <a href="{{ route('pembeli.tampilan') }}" class="btn btn-secondary"><i class="fa fa-undo" aria-hidden="true"></i>&nbsp; Back</a>
+    </div>
+</form>
 @endsection

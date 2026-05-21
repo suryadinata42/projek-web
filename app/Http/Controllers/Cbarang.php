@@ -11,11 +11,13 @@ class Cbarang extends Controller
     {
         $judul = 'Data barang';           
         $barang = Mbarang::all();
-        return view('barang.tampilkan',compact('barang'));
+        return view('barang.tampilkan',compact('barang','judul'));
     }
     public function tambah()
     {
-    return view('barang.tambah');
+
+        $judul = 'Tambah Data Barang';
+        return view('barang.tambah', compact('judul',));
     }
     public function simpan(Request $request)
     {
@@ -41,8 +43,9 @@ class Cbarang extends Controller
 
     public function ubah($id)
     {
+        $judul = 'Ubah Data Barang';
         $barang = Mbarang::findOrFail($id);
-        return view('barang.ubah',compact('barang'));
+        return view('barang.ubah',compact('barang','judul'));
     } 
 
     public function update(Request $request,$id)

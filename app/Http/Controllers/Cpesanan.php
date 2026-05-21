@@ -68,7 +68,7 @@ class Cpesanan extends Controller
     {
         $pesanan = Mpesanan::where('id_pesanan', $id_pesanan)->first();
         $pesanan->delete();
-        return redirect()->route('pesanan.tampil')->with('status', ['judul' => 'Berhasil', 'pesan' => 'Data berhasil disimpan', 'icon' => 'success']);
+        return redirect()->route('pesanan.tampil')->with('status', ['judul' => 'Berhasil', 'pesan' => 'Data berhasil dihapus', 'icon' => 'success']);
     }
 
 }
