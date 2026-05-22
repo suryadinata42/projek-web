@@ -16,12 +16,10 @@ Route::middleware(['guest'])->group(function () {
 });
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/', function () {
-        return view('welcome');
-    })->name('home');
+    Route::get('/', [Cdashboard::class, 'tampil'])->name('home');
 
     Route::get('/logout', [Clogin::class, 'logout'])->name('logout');
-    Route::get('/dashboard', [Cdashboard::class, 'tampil'])->name('dashboard');
+
     // Router buat barang
     Route::get('/barang', [Cbarang::class, 'tampilkan'])->name('barang.tampilkan');
     Route::get('/barang/tambah', [Cbarang::class, 'tambah'])->name('barang.tambah');
@@ -61,4 +59,4 @@ Route::middleware(['auth'])->group(function () {
     route::get('/pembelian/{id_pembelian}/ubah', [Cpembelian::class,'ubah'])->name('pembelian.ubah');
     route::put('/pembelian/{id_pembelian}/update', [Cpembelian::class,'update'])->name('pembelian.update');
     route::delete('/pembelian/{id_pembelian}/hapus', [Cpembelian::class,'hapus'])->name('pembelian.hapus');
-}); 
+});

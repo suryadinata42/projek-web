@@ -28,7 +28,7 @@
         <div class="am-header-left">
             <a id="naviconLeft" href="" class="am-navicon d-none d-lg-flex"><i class="icon ion-navicon-round"></i></a>
             <a id="naviconLeftMobile" href="" class="am-navicon d-lg-none"><i class="icon ion-navicon-round"></i></a>
-            <a href="index.html" class="am-logo">Ripa</a>
+            <a href="{{ route('home') }}" class="am-logo">Toko Ripa</a>
         </div>
 
         <div class="am-header-right">
@@ -57,7 +57,7 @@
                 <a href="{{ route('home') }}" class="nav-link"><i class="fa fa-home tx-24"></i></a>
             </li>
             <li class="nav-item">
-                <a href="{{ route('dashboard') }}" class="nav-link"><i class="fa fa-tachometer tx-24"></i></a>
+                <a href="#" class="nav-link non"></a>
             </li>
             <li class="nav-item">
                 <a href="#" class="nav-link non"></a>

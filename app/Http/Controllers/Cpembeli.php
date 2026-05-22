@@ -32,6 +32,7 @@ class Cpembeli extends Controller
         $pembeli->jenis_kelamin   = $request->jenis_kelamin;
         $pembeli->alamat	    = $request->alamat;
         $pembeli->kode_pos	    = $request->kode_pos;
+        $pembeli->kota          = $request->kota;
         $pembeli->tanggal_lahir	= $request->tanggal_lahir;
         $pembeli->save();
 
@@ -56,6 +57,7 @@ class Cpembeli extends Controller
         $pembeli->jenis_kelamin	= $request->jenis_kelamin;
         $pembeli->alamat	    = $request->alamat;
         $pembeli->kode_pos	    = $request->kode_pos;
+        $pembeli->kota          = $request->kota;
         $pembeli->tanggal_lahir	  = $request->tanggal_lahir;
         $pembeli->save();
 

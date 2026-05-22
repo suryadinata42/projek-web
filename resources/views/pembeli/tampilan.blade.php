@@ -26,6 +26,7 @@
                   <td>Jenis Kelamin</td>
                   <td>Alamat</td>
                   <td>Kode Pos</td>
+                  <td>Kota</td>
                   <td>Tanggal Lahir</td>
                   <td style="width: 100px;">Aksi</td>
             </tr>
@@ -39,6 +40,7 @@
                   <td>{{ $d->jenis_kelamin }}</td>
                   <td>{!! nl2br($d->alamat) !!}</td>
                   <td>{{ $d->kode_pos }}</td>
+                  <td>{{ $d->kota }}</td>
                   <td>{{ $d->tanggal_lahir }}</td>
                   <td>
                      <form id="delete-form-{{ $d->id }}" method="POST" action="{{ route('pembeli.hapus', $d->id) }}">

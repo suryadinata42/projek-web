@@ -1,54 +1,121 @@
 @extends('layout.menu')
 @section('konten')
-<style>
-    .custom-font {
-        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    }
-    .custom-font label {
-        font-weight: 600;
-        margin-bottom: 5px;
-    }
-</style>
 <div class="card">
-    <div class="card-header">
-        <b>Tambah Data Pembeli</b>
+    <div class="card-header bg-info text-white">
+        <i class="fa fa-user" aria-hidden="true"></i>&nbsp; <b>Edit Data Pembeli</b>
     </div>
-    <div class="card-body">
-    <form method="POST" action="{{ route('pembeli.update', $pembeli->id) }}">
-        @csrf
-        @method('PUT')
-        ID Pembeli :
-        <input type="text" name="id_pembeli" required readonly value="{{ old('id_pembeli', $pembeli->id_pembeli) }}">
-        @error('id_pembeli') {{ $message }} @enderror
-        <br>
-        Nama Pembeli :
-        <input type="text" name="nama" required value="{{ old('nama', $pembeli->nama) }}">
-        @error('nama') {{ $message }} @enderror
-        <br>
-        Jenis Kelamin :
-        <select name="jenis_kelamin" required>
-        <option value="">Pilih</option>
-            <option value="laki-laki" {{ $pembeli->jenis_kelamin == 'laki-laki' ? 'selected' : '' }}>Laki-laki</option>
-            <option value="perempuan" {{ $pembeli->jenis_kelamin == 'perempuan' ? 'selected' : '' }}>Perempuan</option>
-        </select>
-         @error('jenis_kelamin') {{ $message }} @enderror
-        <br>
-        Alamat :
-        <textarea name="alamat">{{ $pembeli->alamat }}</textarea>
-        @error('alamat') {{ $message }} @enderror
-        <br>
-        Kode Pos :
-        <input type="text" name="kode_pos" required value="{{ old('kode_pos', $pembeli->kode_pos) }}">
-        @error('kode_pos') {{ $message }} @enderror
-        <br>
-        Tanggal Lahir :
-        <input type="date" name="tanggal_lahir" required value="{{ old('tanggal_lahir', $pembeli->tanggal_lahir) }}">
-        @error('tanggal_lahir') {{ $message }} @enderror
-        <br>
+        <div class="card-body">
+            <form method="POST" action="{{ route('pembeli.update', $pembeli->id) }}">
+            @csrf
+            @method('PUT')
+            
+            <div class="row g-2 align-items-center mb-3">
+                <div class="col-sm-1">
+                    <label for="id_pembeli" class="col-form-label">ID Pembeli</label>
+                </div>
+                <div class="col-sm-11">
+                    <input type="number" name="id_pembeli" id="id_pembeli" class="form-control" required readonly value="{{ old('id_pembeli', $pembeli->id_pembeli) }}">
+                </div>
+                <div class="col-auto">
+                    @error('id_pembeli') 
+                        <span class="text-danger" style="font-size: 0.9em;">{{ $message }}</span> 
+                    @enderror
+                </div>
+            </div>
 
-        <button type="submit">SAVE</button>
-        <a href="{{ route('pembeli.tampilan') }}">Kembali</a>
-    </form>
+            <div class="row g-2 align-items-center mb-3">
+                <div class="col-sm-1">
+                    <label for="nama" class="col-form-label">Nama</label>
+                </div>
+                <div class="col-sm-11">
+                    <input type="text" name="nama" id="nama" class="form-control" required value="{{ old('nama', $pembeli->nama) }}">
+                </div>
+                <div class="col-auto">
+                    @error('nama') 
+                        <span class="text-danger" style="font-size: 0.9em;">{{ $message }}</span> 
+                    @enderror
+                </div>
+            </div>
+
+            <div class="row g-2 align-items-center mb-3">
+                <div class="col-sm-1">
+                    <label for="jenis_kelamin" class="col-form-label">Jenis Kelamin</label>
+                </div>
+                <div class="col-sm-11">
+                    <select name="jenis_kelamin" id="jenis_kelamin" class="form-control" required>
+                        <option value="">Pilih Jenis Kelamin</option>
+                        <option value="laki-laki" {{ old('jenis_kelamin', $pembeli->jenis_kelamin) == 'laki-laki' ? 'selected' : '' }}>Laki-laki</option>
+                        <option value="perempuan" {{ old('jenis_kelamin', $pembeli->jenis_kelamin) == 'perempuan' ? 'selected' : '' }}>Perempuan</option>
+                    </select>
+                </div>
+                <div class="col-auto">
+                    @error('jenis_kelamin') 
+                        <span class="text-danger" style="font-size: 0.9em;">{{ $message }}</span> 
+                    @enderror
+                </div>
+            </div>
+
+            <div class="row g-2 align-items-center mb-3">
+                <div class="col-sm-1">
+                    <label for="alamat" class="col-form-label">Alamat</label>
+                </div>
+                <div class="col-sm-11">
+                    <textarea name="alamat" id="alamat" class="form-control" required>{{ old('alamat', $pembeli->alamat) }}</textarea>
+                </div>
+                <div class="col-auto">
+                    @error('alamat') 
+                        <span class="text-danger" style="font-size: 0.9em;">{{ $message }}</span> 
+                    @enderror
+                </div>
+            </div>
+
+            <div class="row g-2 align-items-center mb-3">
+                <div class="col-sm-1">
+                    <label for="kode_pos" class="col-form-label">Kode Pos</label>
+                </div>
+                <div class="col-sm-11">
+                    <input type="number" name="kode_pos" id="kode_pos" class="form-control" required value="{{ old('kode_pos', $pembeli->kode_pos) }}">
+                </div>
+                <div class="col-auto">
+                    @error('kode_pos') 
+                        <span class="text-danger" style="font-size: 0.9em;">{{ $message }}</span> 
+                    @enderror
+                </div>
+            </div>
+
+            <div class="row g-2 align-items-center mb-3">
+                <div class="col-sm-1">
+                    <label for="kota" class="col-form-label">Kota</label>
+                </div>
+                <div class="col-sm-11">
+                    <input type="text" name="kota" id="kota" class="form-control" required value="{{ old('kota', $pembeli->kota) }}">
+                </div>
+                <div class="col-auto">
+                    @error('kota') 
+                        <span class="text-danger" style="font-size: 0.9em;">{{ $message }}</span> 
+                    @enderror
+                </div>
+            </div>
+
+            <div class="row g-2 align-items-center mb-3">
+                <div class="col-sm-1">
+                    <label for="tanggal_lahir" class="col-form-label">Tanggal Lahir</label>
+                </div>
+                <div class="col-sm-11">
+                    <input type="date" name="tanggal_lahir" id="tanggal_lahir" class="form-control" required value="{{ old('tanggal_lahir', $pembeli->tanggal_lahir) }}">
+                </div>
+                <div class="col-auto">
+                    @error('tanggal_lahir') 
+                        <span class="text-danger" style="font-size: 0.9em;">{{ $message }}</span> 
+                    @enderror
+                </div>
+            </div>
+            
+            <div class="mt-4">
+                <button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp; Save</button>
+                <a href="{{ route('pembeli.tampilan') }}" class="btn btn-secondary"><i class="fa fa-undo" aria-hidden="true"></i>&nbsp; Back</a>
+            </div>
+        </div>
     </div>
-</div>
+</form>
 @endsection

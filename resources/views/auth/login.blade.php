@@ -38,7 +38,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/amanda.css') }}">
     <style>
         .am-signin-wrapper{
-        background-image: url("{{ asset('assets/img/b.jpg') }}");
+        background-image: url("{{ asset('assets/img/ad.jpg') }}");
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;

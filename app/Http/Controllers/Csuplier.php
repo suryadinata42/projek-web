@@ -10,7 +10,7 @@ class Csuplier extends Controller
     {
         $judul = 'Data suplier';     
         $suplier = Msuplier::all();
-        return view("suplier.tampil", compact("suplier"));
+        return view("suplier.tampil", compact("suplier",'judul'));
     }
         public function tambah()
     {
@@ -21,8 +21,6 @@ class Csuplier extends Controller
     {
         $request->validate([
             'id_suplier'    => 'required|max:6|unique:suplier,id_suplier',
-            'nama'  => 'required|min:3|regex:/^[\pL\s]+$/u',
-            'kode_pos'=> 'required|numeric',
         ]);
 
         Msuplier::create([
@@ -37,13 +35,13 @@ class Csuplier extends Controller
     }
     public function ubah($id_suplier)
     {
+        // dd($id_suplier); // cek dulu id yang masuk    
         $sup = Msuplier::where('id_suplier', $id_suplier)->first();
         return view('suplier.ubah', compact('sup'));
     }
     public function update(Request $request, $id_suplier)
     {
         $request -> validate([
-            'nama'=> 'required|string|min:6|unique:barang,id_barang',
             'kode_pos'=> 'required|numeric',
         ]);
         $suplier = Msuplier::where('id_suplier', $id_suplier)->first();

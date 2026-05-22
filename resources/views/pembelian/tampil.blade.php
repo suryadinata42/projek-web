@@ -36,12 +36,12 @@
                     <td>{{ $d->qty}}</td>
                     <td>{{ $d->tgl}}</td>
                     <td>
-                       <form id="delete-form-{{ $d->id }}" method="POST" action="{{ route('pembelian.hapus', $d->id) }}">
+                       <form id="delete-form-{{ $d->id_pembelian }}" method="POST" action="{{ route('pembelian.hapus', $d->id_pembelian) }}">
                             @csrf
                             @method('DELETE')
-                            <a href="{{ route('pembelian.ubah', $d->id) }}" class="btn btn-success btn-sm khusus mb-1"><i class="fa fa-edit"></i></a>
+                            <a href="{{ route('pembelian.ubah', $d->id_pembelian) }}" class="btn btn-success btn-sm khusus mb-1"><i class="fa fa-edit"></i></a>
                             <button type="button" class="btn btn-danger btn-sm mb-1" 
-                            onclick="confirmDelete({{ $d->id }})" title="Hapus Data"><i class="fa fa-trash"></i></button>
+                            onclick="confirmDelete({{ $d->id_pembelian }})" title="Hapus Data"><i class="fa fa-trash"></i></button>
                         </form>
 
                 </td>

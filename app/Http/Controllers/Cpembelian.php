@@ -23,9 +23,10 @@ class Cpembelian extends Controller
     }
     public function tambah()
     {
+        $judul = 'Tambah Data pembelian'; 
         $barang = DB::table('barang')->get();
         $suplier = DB::table('suplier')->get();
-        return view('pembelian.tambah', compact('barang', 'suplier'));
+        return view('pembelian.tambah', compact('barang', 'suplier','judul'));
     }
     public function simpan(Request $request)
     {
@@ -46,10 +47,11 @@ class Cpembelian extends Controller
 
     public function ubah($id_pembelian)
     {
+        $judul = 'Edit Data Pembelian';
         $pembelian = Mpembelian::where('id_pembelian', $id_pembelian)->first();
         $barang = DB::table('barang')->get();
         $suplier = DB::table('suplier')->get();
-        return view('pembelian.ubah', compact('pembelian', 'barang', 'suplier'));
+        return view('pembelian.ubah', compact('pembelian', 'barang', 'suplier','judul'));
     }
 
     public function update(Request $request, $id_pembelian)
