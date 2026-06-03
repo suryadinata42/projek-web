@@ -5,7 +5,7 @@
         <i class="fa fa-gift" aria-hidden="true"></i>&nbsp; <b>Tambah Data Barang</b>
     </div>
         <div class="card-body">
-    <form method="POST" action="{{ route('barang.simpan') }}">
+    <form method="POST" action="{{ route('barang.simpan') }}" enctype="multipart/form-data">
         @csrf
         <div class="row g-2 align-items-center mb-3">
             <div class="col-sm-1">
@@ -72,6 +72,20 @@
             </div>
             <div class="col-auto">
                 @error('harga_jual') 
+                    <span class="text-danger" style="font-size: 0.9em;">{{ $message }}</span> 
+                @enderror
+            </div>
+        </div>
+
+        <div class="row g-2 align-items-center mb-3">
+            <div class="col-sm-1">
+                <label for="foto" class="col-form-label">foto Barang</label>
+            </div>
+            <div class="col-sm-11">
+                <input type="file" name="foto" id="foto" class="form-control" accept=".jpg, .jpeg, .png" required>
+            </div>
+            <div class="col-auto">
+                @error('foto') 
                     <span class="text-danger" style="font-size: 0.9em;">{{ $message }}</span> 
                 @enderror
             </div>

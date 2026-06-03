@@ -11,6 +11,9 @@ use Illuminate\Redis\Limiters\DurationLimiterBuilder;
 use Illuminate\Support\Traits\Macroable;
 use Throwable;
 
+/**
+ * @mixin \Redis
+ */
 abstract class Connection
 {
     use Macroable {
@@ -110,8 +113,6 @@ abstract class Connection
      * @param  string  $method
      * @param  array  $parameters
      * @return mixed
-     *
-     * @throws \Throwable
      */
     public function command($method, array $parameters = [])
     {

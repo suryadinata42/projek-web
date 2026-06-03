@@ -7,8 +7,17 @@
     </div>
     
     <div class="card-body">
-        <a href="{{ route('barang.tambah') }}" class="btn btn-primary mb-3"><i class="fa fa-plus-square" aria-hidden="true"></i>&nbsp; Tambah Data</a>
-
+        <div class="mb-3 d-flex align-items-center">
+            <a href="{{ route('barang.tambah') }}" class="btn btn-primary">
+                <i class="fa fa-plus-square" aria-hidden="true"></i>&nbsp; Tambah Data
+            </a>
+            <a href="{{ route('barang.ekspor') }}" target="_blank" class="btn btn-success ml-2">
+                <i class="fa fa-share-square-o"></i>&nbsp; Ekspor
+            </a>
+            <a href="{{ route('barang.cetak') }}" target="_blank" class="btn btn-info ml-2">
+                <i class="fa fa-print"></i>&nbsp; Cetak
+            </a>
+        </div>
         <table class="table table-bordered table-hover" style="width:100%; font-family:Helvetica">
             <thead> 
                 <tr>
@@ -18,6 +27,7 @@
                     <th>Varian</th>
                     <th>Harga Beli</th>
                     <th>Harga Jual</th>
+                    <th style="width:100px;">Foto</th>
                     <th style="width:100px;">AKSI</th>
                 </tr>
             </thead>
@@ -30,6 +40,17 @@
                     <td>{{ $d->varian }}</td>
                     <td>{{ $d->harga_beli }}</td>
                     <td>{{ $d->harga_jual }}</td>
+                    <td>
+                        @if($d->foto)
+                            <a href="{{ asset('uploads/fotoBarang/' . $d->foto) }}" target=_blank>
+                                <img src="{{ asset('uploads/fotoBarang/' . $d->foto) }}" style="width: 100px;
+                                height: auto;" />
+                            </a>
+                        @else
+                            No Foto
+                        @endif
+                        </td>   
+                    </td>
                     <td>
                     <form id="delete-form-{{ $d->id }}" method="POST" action="{{ route('barang.hapus', $d->id) }}">
                         @csrf

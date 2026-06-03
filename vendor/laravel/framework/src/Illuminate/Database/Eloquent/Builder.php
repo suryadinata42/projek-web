@@ -356,9 +356,6 @@ class Builder implements BuilderContract
 
             $this->eagerLoad = array_merge($this->eagerLoad, $query->getEagerLoads());
 
-            $this->withoutGlobalScopes(
-                $query->removedScopes()
-            );
             $this->query->addNestedWhereQuery($query->getQuery(), $boolean);
         } else {
             $this->query->where(...func_get_args());
@@ -721,8 +718,6 @@ class Builder implements BuilderContract
      * @param  array  $attributes
      * @param  (\Closure(): array)|array  $values
      * @return TModel
-     *
-     * @throws \Illuminate\Database\UniqueConstraintViolationException
      */
     public function createOrFirst(array $attributes = [], Closure|array $values = [])
     {
@@ -1114,7 +1109,7 @@ class Builder implements BuilderContract
      * @param  string  $pageName
      * @param  int|null  $page
      * @param  \Closure|int|null  $total
-     * @return \Illuminate\Pagination\LengthAwarePaginator
+     * @return \Illuminate\Pagination\LengthAwarePaginator<int, TModel>
      *
      * @throws \InvalidArgumentException
      */
@@ -1143,7 +1138,7 @@ class Builder implements BuilderContract
      * @param  array|string  $columns
      * @param  string  $pageName
      * @param  int|null  $page
-     * @return \Illuminate\Contracts\Pagination\Paginator
+     * @return \Illuminate\Pagination\Paginator<int, TModel>
      */
     public function simplePaginate($perPage = null, $columns = ['*'], $pageName = 'page', $page = null)
     {
@@ -1169,7 +1164,7 @@ class Builder implements BuilderContract
      * @param  array|string  $columns
      * @param  string  $cursorName
      * @param  \Illuminate\Pagination\Cursor|string|null  $cursor
-     * @return \Illuminate\Contracts\Pagination\CursorPaginator
+     * @return \Illuminate\Pagination\CursorPaginator<int, TModel>
      */
     public function cursorPaginate($perPage = null, $columns = ['*'], $cursorName = 'cursor', $cursor = null)
     {

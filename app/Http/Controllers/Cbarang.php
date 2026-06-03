@@ -27,14 +27,22 @@ class Cbarang extends Controller
             'harga_beli'=> 'required|numeric|min:1000',
             'harga_jual' => 'required|numeric|min:1000', 
 	]);
+        $foto = $request->file('foto');
+        $filename = null;
+        if ($foto) {
+            $extension = $foto->getClientOriginalExtension();
+            $filename = date('YmdHis') . '.' . $extension;
+            $foto->move(public_path('uploads/fotoBarang'), $filename);
+        }
 
-        $barang = new Mbarang();
-        $barang->id_barang	        = $request->id_barang;
-        $barang->nama	            = $request->nama;
-        $barang->varian   	        = $request->varian;
-        $barang->harga_beli     	= $request->harga_beli;
-        $barang->harga_jual	        = $request->harga_jual;
-        $barang->save();
+        Mbarang::create([
+            'id_barang' => $request->id_barang,
+            'nama' => $request->nama,
+            'varian' => $request->varian,
+            'harga_beli' => $request->harga_beli,
+            'harga_jual' => $request->harga_jual,
+            'foto' => $filename,
+        ]);
 
         return redirect()->route('barang.tampilkan')->with('status', ['judul' => 'Berhasil', 'pesan' => 'Data berhasil disimpan', 'icon' => 'success']);
 
@@ -76,5 +84,18 @@ class Cbarang extends Controller
         $barang->delete();
         return redirect()->route('barang.tampilkan')->with('status', ['judul' => 'Berhasil', 'pesan' => 'Data berhasil disimpan', 'icon' => 'success']);
 
+    }
+    public function cetak()
+    {
+        $barang = Mbarang::get();
+        return view('barang.cetak', compact('barang'));
+    }
+
+    public function ekspor()
+    {
+        header("Content-type: application/vnd-ms-excel");
+        header("Content-Disposition: attachment; filename=nama_file.xls");
+        $barang = Mbarang::get();
+        return view('barang.ekspor', compact('barang'));
     }
 }

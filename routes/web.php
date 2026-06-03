@@ -27,6 +27,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/barang/{id}/ubah', [Cbarang::class, 'ubah'])->name('barang.ubah');
     Route::put('/barang/{id}/update', [Cbarang::class, 'update'])->name('barang.update');
     Route::delete('/barang/{id}/hapus', [Cbarang::class, 'hapus'])->name('barang.hapus');
+    Route::get('/barang/cetak', [Cbarang::class, 'cetak'])->name('barang.cetak');
+    Route::get('/barang/ekspor', [Cbarang::class, 'ekspor'])->name('barang.ekspor');
     
     // router buat pembeli
     route::get('/pembeli', [Cpembeli::class,'tampilan'])->name('pembeli.tampilan');

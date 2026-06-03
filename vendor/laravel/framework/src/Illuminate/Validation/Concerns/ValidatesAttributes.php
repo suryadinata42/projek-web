@@ -943,6 +943,10 @@ trait ValidatesAttributes
             return false;
         }
 
+        if (preg_match('/[\r\n]/', (string) $value) > 0) {
+            return false;
+        }
+
         $validations = (new Collection($parameters))
             ->unique()
             ->map(fn ($validation) => match (true) {
@@ -969,8 +973,6 @@ trait ValidatesAttributes
      * @param  mixed  $value
      * @param  array<int, int|string>  $parameters
      * @return bool
-     *
-     * @throws \InvalidArgumentException
      */
     public function validateEncoding($attribute, $value, $parameters)
     {
@@ -1904,8 +1906,6 @@ trait ValidatesAttributes
      * @param  mixed  $value
      * @param  array<int, int|string>  $parameters
      * @return bool
-     *
-     * @throws \Illuminate\Support\Exceptions\MathException
      */
     public function validateMultipleOf($attribute, $value, $parameters)
     {

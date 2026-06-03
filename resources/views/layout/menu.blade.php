@@ -16,8 +16,48 @@
 
     <link rel="stylesheet" href="{{ asset('assets/css/amanda.css') }}">
     <style>
-    body, h1, h2, h3, h4, h5, h6, p, span, a, div, li {
-        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+        body, h1, h2, h3, h4, h5, h6, p, a, span, div, .nav-link, .am-title {
+            font-family: 'Helvetica', 'Arial', sans-serif !important;
+        }
+        
+        @media (min-width: 992px) {
+        
+        /* === KONDISI 1: SIDEBAR SEMBUNYI === */
+        body:not(.sidebar-aktif) .am-sideleft {
+            left: -230px !important; 
+        }
+        body:not(.sidebar-aktif) .am-mainpanel {
+            margin-left: 0 !important; 
+            width: 100% !important; 
+            max-width: 100% !important;
+        }
+        /* INI OBAT KHUSUS UNTUK PAGETITLE BIAR IKUT MELAR FULL */
+        body:not(.sidebar-aktif) .am-pagetitle {
+            width: 100% !important;
+            max-width: 100% !important;
+            left: 0 !important;
+            margin-left: 0 !important;
+            flex: 1 1 auto !important; /* Memaksa flexbox untuk memenuhi sisa ruang */
+        }
+        
+        /* === KONDISI 2: SIDEBAR MUNCUL === */
+        body.sidebar-aktif .am-sideleft {
+            left: 0 !important;
+        }
+        body.sidebar-aktif .am-mainpanel {
+            margin-left: 230px !important;
+            width: calc(100% - 230px) !important; 
+        }
+        /* Kembalikan pagetitle ke ukuran normal biar gak nabrak saat sidebar muncul */
+        body.sidebar-aktif .am-pagetitle {
+            width: 100% !important;
+            max-width: 100% !important;
+        }
+
+        /* === ANIMASI TRANSISI Mulus === */
+        .am-sideleft, .am-mainpanel, .am-pagetitle {
+            transition: all 0.3s ease-in-out !important;
+        }
     }
     </style>
 </head>
@@ -197,5 +237,14 @@
     </script>
 
 </body>
+<script>
+    $(document).ready(function() {
+
+        $('#naviconLeft').off('click').on('click', function(e) {
+            e.preventDefault();
+            $('body').toggleClass('sidebar-aktif');
+        });
+    });
+</script>
 </html>
 

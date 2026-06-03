@@ -8,5 +8,5 @@ class Msuplier extends Model
 {
     use HasFactory;
     protected $table= "suplier";
-    protected $fillable=["id_suplier","nama","alamat","kode_pos","kota"];
+    protected $fillable=["id_suplier","nama","alamat","kode_pos","kota", 'foto'];
 }
