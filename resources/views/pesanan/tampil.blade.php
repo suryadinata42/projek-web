@@ -28,7 +28,7 @@
                     <td>{{ $d->varian }}</td>
                     <td>{{ $d->nama_pembeli }}</td>
                     <td>{{ $d->qty }}</td>
-                    <td>{{ $d->tgl_pesan }}</td>
+                    <td>{{ dateID($d->tgl_pesan) }}</td>
                     <td>
                         <form id="delete-form-{{ $d->id_pesanan }}" method="POST" action="{{ route('pesanan.hapus', $d->id_pesanan) }}">
                             @csrf

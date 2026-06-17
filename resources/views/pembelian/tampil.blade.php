@@ -34,7 +34,7 @@
                     <td>{{ $d->varian}}</td>
                     <td>{{ $d->nama_suplier }}</td>
                     <td>{{ $d->qty}}</td>
-                    <td>{{ $d->tgl}}</td>
+                    <td>{{ dateID($d->tgl) }}</td>
                     <td>
                        <form id="delete-form-{{ $d->id_pembelian }}" method="POST" action="{{ route('pembelian.hapus', $d->id_pembelian) }}">
                             @csrf

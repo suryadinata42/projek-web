@@ -31,7 +31,7 @@
                     <select name="nama_barang" id="nama_barang" class="form-control" required>
                         <option value="">-- Pilih Barang --</option>
                         @foreach($barang as $brg)
-                            <option value="{{ $brg->id_barang }}" {{ $brg->id_barang === $pesanan->id_barang ? 'selected' : '' }}>
+                            <option value="{{ $brg->id_barang }}" {{ $brg->id_barang == $pesanan->id_barang ? 'selected' : '' }}>
                                 {{ $brg->nama }}
                             </option>
                         @endforeach
@@ -52,7 +52,7 @@
                     <select name="nama_pembeli" id="nama_pembeli" class="form-control" required>
                         <option value="">-- Pilih Pembeli --</option>
                         @foreach($pembeli as $pem)
-                            <option value="{{ $pem->id_pembeli }}" {{ $pem->id_pembeli === $pesanan->id_pelanggan ? 'selected' : '' }}>
+                            <option value="{{ $pem->id_pembeli }}" {{ $pem->id_pembeli == $pesanan->id_pelanggan ? 'selected' : '' }}>
                                 {{ $pem->nama }}
                             </option>
                         @endforeach

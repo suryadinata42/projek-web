@@ -38,8 +38,8 @@
                     <td>{{ $d->id_barang }}</td>
                     <td>{{ $d->nama }}</td>
                     <td>{{ $d->varian }}</td>
-                    <td>{{ $d->harga_beli }}</td>
-                    <td>{{ $d->harga_jual }}</td>
+                    <td>{{ rupiah($d->harga_beli) }}</td>
+                    <td>{{ rupiah($d->harga_jual) }}</td>
                     <td>
                         @if($d->foto)
                             <a href="{{ asset('uploads/fotoBarang/' . $d->foto) }}" target=_blank>

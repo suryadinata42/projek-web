@@ -1,250 +1,259 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AdminLTE 3 | Blank Page</title>
 
-    <link rel="icon" href="img/logo.png" type="image/png" />
-    <title>Home</title>
-
-    <link href="{{ asset('assets/lib/font-awesome/css/font-awesome.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/lib/Ionicons/css/ionicons.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/lib/perfect-scrollbar/css/perfect-scrollbar.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/lib/jquery-toggles/toggles-full.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/lib/rickshaw/rickshaw.min.css') }}" rel="stylesheet">
-
-    <link rel="stylesheet" href="{{ asset('assets/css/amanda.css') }}">
-    <style>
-        body, h1, h2, h3, h4, h5, h6, p, a, span, div, .nav-link, .am-title {
-            font-family: 'Helvetica', 'Arial', sans-serif !important;
-        }
-        
-        @media (min-width: 992px) {
-        
-        /* === KONDISI 1: SIDEBAR SEMBUNYI === */
-        body:not(.sidebar-aktif) .am-sideleft {
-            left: -230px !important; 
-        }
-        body:not(.sidebar-aktif) .am-mainpanel {
-            margin-left: 0 !important; 
-            width: 100% !important; 
-            max-width: 100% !important;
-        }
-        /* INI OBAT KHUSUS UNTUK PAGETITLE BIAR IKUT MELAR FULL */
-        body:not(.sidebar-aktif) .am-pagetitle {
-            width: 100% !important;
-            max-width: 100% !important;
-            left: 0 !important;
-            margin-left: 0 !important;
-            flex: 1 1 auto !important; /* Memaksa flexbox untuk memenuhi sisa ruang */
-        }
-        
-        /* === KONDISI 2: SIDEBAR MUNCUL === */
-        body.sidebar-aktif .am-sideleft {
-            left: 0 !important;
-        }
-        body.sidebar-aktif .am-mainpanel {
-            margin-left: 230px !important;
-            width: calc(100% - 230px) !important; 
-        }
-        /* Kembalikan pagetitle ke ukuran normal biar gak nabrak saat sidebar muncul */
-        body.sidebar-aktif .am-pagetitle {
-            width: 100% !important;
-            max-width: 100% !important;
-        }
-
-        /* === ANIMASI TRANSISI Mulus === */
-        .am-sideleft, .am-mainpanel, .am-pagetitle {
-            transition: all 0.3s ease-in-out !important;
-        }
-    }
-    </style>
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="{{ asset('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback') }}">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{{ asset('aset_amin/plugins/fontawesome-free/css/all.min.css') }}">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{{ asset('aset_amin/dist/css/adminlte.min.css') }}">
 </head>
+<body class="hold-transition sidebar-mini">
+<!-- Site wrapper -->
+<div class="wrapper">
+  <!-- Navbar -->
+  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="{{ route('home') }}" class="nav-link">Home</a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="#" class="nav-link">Contact</a>
+      </li>
+    </ul>
 
-<body>
-
-    <div class="am-header">
-        <div class="am-header-left">
-            <a id="naviconLeft" href="" class="am-navicon d-none d-lg-flex"><i class="icon ion-navicon-round"></i></a>
-            <a id="naviconLeftMobile" href="" class="am-navicon d-lg-none"><i class="icon ion-navicon-round"></i></a>
-            <a href="{{ route('home') }}" class="am-logo">Toko Ripa</a>
-        </div>
-
-        <div class="am-header-right">
-
-            <div class="dropdown dropdown-profile">
-                <a href="" class="nav-link nav-link-profile" data-toggle="dropdown">
-                    <img src="img/img3.jpg" class="wd-32 rounded-circle" alt="">
-                    <span class="logged-name">
-                        <span class="hidden-xs-down">{{ Auth::user()->name }}</span> 
-                        <i class="fa fa-angle-down mg-l-3"></i>
-                    </span>
-                </a>
-                <div class="dropdown-menu wd-200">
-                    <ul class="list-unstyled user-profile-nav">
-                        <li><a href=""><i class="icon ion-ios-person-outline"></i> Edit Profile</a></li>
-                        <li><a href="{{ route('logout') }}"><i class="icon ion-power"></i> Sign Out</a></li>
-                    </ul>
-                </div>
+    <!-- Right navbar links -->
+    <ul class="navbar-nav ml-auto">
+      <!-- Navbar Search -->
+      <li class="nav-item">
+        <a class="nav-link" data-widget="navbar-search" href="#" role="button">
+          <i class="fas fa-search"></i>
+        </a>
+        <div class="navbar-search-block">
+          <form class="form-inline">
+            <div class="input-group input-group-sm">
+              <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+              <div class="input-group-append">
+                <button class="btn btn-navbar" type="submit">
+                  <i class="fas fa-search"></i>
+                </button>
+                <button class="btn btn-navbar" type="button" data-widget="navbar-search">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
             </div>
+          </form>
         </div>
-    </div>
+      </li>
 
-    <div class="am-sideleft">
-        <ul class="nav am-sideleft-tab">
-            <li class="nav-item">
-                <a href="{{ route('home') }}" class="nav-link"><i class="fa fa-home tx-24"></i></a>
-            </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link non"></a>
-            </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link non"></a>
-            </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link non"></a>
-            </li>
+      <!-- Messages Dropdown Menu -->
+      <li class="nav-item dropdown">
+        <a class="nav-link" data-toggle="dropdown" href="#">
+          <i class="far fa-comments"></i>
+          <span class="badge badge-danger navbar-badge">3</span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+          <a href="#" class="dropdown-item">
+            <!-- Message Start -->
+            <div class="media">
+              <img src="{{ asset('aset_amin/dist/img/user1-128x128.jpg') }}" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+              <div class="media-body">
+                <h3 class="dropdown-item-title">
+                  Brad Diesel
+                  <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
+                </h3>
+                <p class="text-sm">Call me whenever you can...</p>
+                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+              </div>
+            </div>
+            <!-- Message End -->
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <!-- Message Start -->
+            <div class="media">
+              <img src="{{ asset('aset_amin/dist/img/user8-128x128.jpg') }}" alt="User Avatar" class="img-size-50 img-circle mr-3">
+              <div class="media-body">
+                <h3 class="dropdown-item-title">
+                  John Pierce
+                  <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
+                </h3>
+                <p class="text-sm">I got your message bro</p>
+                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+              </div>
+            </div>
+            <!-- Message End -->
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <!-- Message Start -->
+            <div class="media">
+              <img src="{{ asset('aset_amin/dist/img/user3-128x128.jpg') }}" alt="User Avatar" class="img-size-50 img-circle mr-3">
+              <div class="media-body">
+                <h3 class="dropdown-item-title">
+                  Nora Silvester
+                  <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
+                </h3>
+                <p class="text-sm">The subject goes here</p>
+                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+              </div>
+            </div>
+            <!-- Message End -->
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
+        </div>
+      </li>
+      <!-- Notifications Dropdown Menu -->
+      <li class="nav-item dropdown">
+        <a class="nav-link" data-toggle="dropdown" href="#">
+          <i class="far fa-bell"></i>
+          <span class="badge badge-warning navbar-badge">15</span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+          <span class="dropdown-item dropdown-header">15 Notifications</span>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <i class="fas fa-envelope mr-2"></i> 4 new messages
+            <span class="float-right text-muted text-sm">3 mins</span>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <i class="fas fa-users mr-2"></i> 8 friend requests
+            <span class="float-right text-muted text-sm">12 hours</span>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <i class="fas fa-file mr-2"></i> 3 new reports
+            <span class="float-right text-muted text-sm">2 days</span>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+          <i class="fas fa-expand-arrows-alt"></i>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
+          <i class="fas fa-th-large"></i>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <!-- /.navbar -->
+
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="{{ asset('aset_amin/index.html') }}" class="brand-link">
+      <img src="{{ asset('aset_amin/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light">AdminLTE 3</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <img src="{{ asset('aset_amin/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
+        </div>
+        <div class="info">
+          <a href="#" class="d-block">Alexander Pierce</a>
+        </div>
+      </div>
+
+      <!-- SidebarSearch Form -->
+      <div class="form-inline">
+        <div class="input-group" data-widget="sidebar-search">
+          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+          <div class="input-group-append">
+            <button class="btn btn-sidebar">
+              <i class="fas fa-search fa-fw"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <li class="nav-item">
+            <a href="{{ route('barang.tampilkan') }}" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Barang
+              </p>
+            </a>
+          </li>
         </ul>
-        <style>
-            .non {
-                pointer-events: none;
-            }
-        </style>
-
-        <div class="tab-content">
-            <div id="mainMenu" class="tab-pane active">
-                <ul class="nav am-sideleft-menu">
-                    <!-- <li class="nav-item">
-                        <a href="{{ route('home') }}" class="nav-link">
-                            <i class="icon ion-ios-home-outline"></i>
-                            <span>Dashboard</span>
-                        </a>
-                    </li> -->
-                    <li class="nav-item">
-                        <a href="{{ route('barang.tampilkan') }}" class="nav-link {{ Request::is('barang') ? 'active' : '' }}">
-                            <i class="fa fa-gift" style="font-size:1.2em"></i> 
-                            <span>Barang</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('pembeli.tampilan') }}" class="nav-link {{ Request::is('pembeli') ? 'active' : '' }}">
-                            <i class="fa fa-user" style="font-size:1.2em"></i>
-                            <span>Pembeli</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('suplier.tampil') }}" class="nav-link {{ Request::is('suplier') ? 'active' : '' }}">
-                            <i class="fa fa-users" style="font-size:1.2em"></i>
-                            <span>Suplier</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('pesanan.tampil') }}" class="nav-link {{ Request::is('pesanan') ? 'active' : '' }}">
-                            <i class="fa fa-shopping-basket" style="font-size:1.2em"></i>
-                            <span>Pesanan</span>
-                        </a>
-                    </li>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('pembelian.tampil') }}" class="nav-link {{ Request::is('pembelian') ? 'active' : '' }}">
-                            <i class="fa fa-handshake-o" style="font-size:1.2em"></i>
-                            <span>Pembelian</span>
-                        </a>
-                    </li>
-
-
-                    <!--
-                    <li class="nav-item">
-                        <a href="" class="nav-link with-sub">
-                            <i class="icon ion-ios-gear-outline"></i>
-                            <span>Forms</span>
-                        </a>
-                        <ul class="nav-sub">
-                            <li class="nav-item"><a href="form-elements.html" class="nav-link">Form Elements</a></li>
-                            <li class="nav-item"><a href="form-layouts.html" class="nav-link">Form Layouts</a></li>
-                            <li class="nav-item"><a href="form-validation.html" class="nav-link">Form Validation</a></li>
-                            <li class="nav-item"><a href="form-wizards.html" class="nav-link">Form Wizards</a></li>
-                            <li class="nav-item"><a href="form-editor-text.html" class="nav-link">Text Editor</a></li>
-                        </ul>
-                    </li>
-                    -->
-                </ul>
-            </div>
-        </div>
+      </nav>
+      <!-- /.sidebar-menu -->
     </div>
+    <!-- /.sidebar -->
+  </aside>
 
-    <div class="am-mainpanel">
-        <div class="am-pagetitle">
-            <h5 class="am-title">{{ isset($judul) ? ($judul) : '' }}</h5>         
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Blank Page</li>
+            </ol>
+          </div>
         </div>
-        <div class="am-pagebody">
+      </div><!-- /.container-fluid -->
+    </section>
 
-            <!-- Isi disini ---------------------------------------- -->
+    <!-- Main content -->
+    <section class="content">
+
+      <!-- Default box -->
+        <div class="card">
             @yield('konten')
-            <!-- Batas isi disini ---------------------------------- -->
+        </div>          
+        <!-- /.card-body -->
+        <!-- /.card-footer-->
+      </div>
+      <!-- /.card -->
 
-        </div>
-    </div>
-    <script src="{{ asset('assets/lib/jquery/jquery.js') }}"></script>
-    <script src="{{ asset('assets/lib/popper.js/popper.js') }}"></script>
-    <script src="{{ asset('assets/lib/bootstrap/bootstrap.js') }}"></script>
-    <script src="{{ asset('assets/lib/perfect-scrollbar/js/perfect-scrollbar.jquery.js') }}"></script>
-    <script src="{{ asset('assets/lib/jquery-toggles/toggles.min.js') }}"></script>
-    <script src="{{ asset('assets/lib/d3/d3.js') }}"></script>
-    <script src="{{ asset('assets/lib/rickshaw/rickshaw.min.js') }}"></script>
-    <script src="http://maps.google.com/maps/api/js?key=AIzaSyAEt_DBLTknLexNbTVwbXyq2HSf2UbRBU8"></script>
-    <script src="{{ asset('assets/lib/gmaps/gmaps.js') }}"></script>
-    <script src="{{ asset('assets/lib/Flot/jquery.flot.js') }}"></script>
-    <script src="{{ asset('assets/lib/Flot/jquery.flot.pie.js') }}"></script>
-    <script src="{{ asset('assets/lib/Flot/jquery.flot.resize.js') }}"></script>
-    <script src="{{ asset('assets/lib/flot-spline/jquery.flot.spline.js') }}"></script>
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
 
-    <script src="js/amanda.js"></script>
-    <script src="js/ResizeSensor.js"></script>
-    <script src="js/dashboard.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    
-    @if(session('status'))
-    <script>
-        Swal.fire({
-        position: "top-end",
-        icon: "{{session('status')['icon']}}",
-        title: "{{session('status')['judul']}}",
-        showConfirmButton: false,
-        timer: 1500
-        });
-    </script>
-    @endif
-
-    <script>
-        function confirmDelete(id) {
-            Swal.fire({
-                title: 'Yakin Data ini?', 
-                text: "Data yang dihapus tidak dapat dikembalikan!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#0054fb', 
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Ya, hapus!', 
-                cancelButtonText: 'Batal'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    document.getElementById('delete-form-' + id).submit();
-                }
-            });
-        }
-    </script>
-
+<!-- jQuery -->
+<script src="{{ asset('aset_amin/plugins/jquery/jquery.min.js') }}"></script>
+<!-- Bootstrap 4 -->
+<script src="{{ asset('aset_amin/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<!-- AdminLTE App -->
+<script src="{{ asset('aset_amin/dist/js/adminlte.min.js') }}"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="{{ asset('aset_amin/dist/js/demo.js') }}"></script>
 </body>
-<script>
-    $(document).ready(function() {
-
-        $('#naviconLeft').off('click').on('click', function(e) {
-            e.preventDefault();
-            $('body').toggleClass('sidebar-aktif');
-        });
-    });
-</script>
 </html>
-

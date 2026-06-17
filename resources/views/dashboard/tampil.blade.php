@@ -45,6 +45,8 @@
             </div>
         </div>
 
+        
+
         {{-- Carousel --}}
         <div class="card">
             <div class="card-body pd-0">
@@ -145,17 +147,80 @@
 
                     <div class="menu-box">
                         <a href="{{ route('pembelian.tampil') }}" class="nav-link bg-light p-3 rounded shadow-sm text-dark" style="border: 1px solid #DC3545; border-left: 10px solid #DC3545;">
-                            <i class="fa fa-handshake-o fa-3x mb-2 text-secondary"></i>
+                            <i class="fa fa-shopping-basket fa-3x mb-2 text-secondary"></i>
                             <p class="m-0 text-center" style="font-size: 13px; font-weight: 600;">Tampil Pembelian</p>
                         </a>
                     </div>
 
                 </div>
+            
             </div>
+
+
+            <!-- <div class="row row-sm mg-t-20 mg-b-20">
+                <div class="col-lg-12">
+                    <div class="card rounded-0 bd bg-white">
+                        <div class="card-header bg-white bd-b-0 pd-t-20 pd-b-0">
+                            <h6 class="tx-uppercase tx-12 tx-bold tx-gray-800 mg-b-0 text-center">Grafik Transaksi Bulanan</h6>
+                        </div>
+                        <div class="card-body pd-20 d-flex flex-column" style="height: 350px;">
+                            <div style="position: relative; height: 100%; width: 100%;">
+                                <canvas id="grafikGaris"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
         </div>
     </div>
 </div>
 {{-- Stats Cards --}}
 
-
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var ctx = document.getElementById('grafikGaris').getContext('2d');
+        var myLineChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun'],
+                datasets: [
+                    {
+                        label: 'Pesanan',
+                        data: [12, 19, 15, 25, 22, 30],
+                        borderColor: '#F49917',
+                        backgroundColor: 'rgba(244, 153, 23, 0.1)',
+                        borderWidth: 2,
+                        pointBackgroundColor: '#F49917',
+                        fill: true,
+                        tension: 0 // <-- Ubah jadi 0 agar garisnya lurus kaku
+                    },
+                    {
+                        label: 'Pembelian',
+                        data: [10, 15, 8, 20, 18, 25],
+                        borderColor: '#DC3545',
+                        backgroundColor: 'rgba(220, 53, 69, 0.1)',
+                        borderWidth: 2,
+                        pointBackgroundColor: '#DC3545',
+                        fill: true,
+                        tension: 0 // <-- Ubah jadi 0 agar garisnya lurus kaku
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                        labels: { boxWidth: 12, font: { size: 11 } }
+                    }
+                },
+                scales: {
+                    y: { beginAtZero: true }
+                }
+            }
+        });
+    });
+</script>
 @endsection

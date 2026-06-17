@@ -1,28 +1,27 @@
+<!DOCTYPE html>
+<html>
 <head>
-    <link rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
-    integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
-    crossorigin="anonymous">
+    <title>Export Data Barang</title>
     <style>
-        @media print {
-            @page {
-                size: A4;
-                margin-top: 20mm;
-                margin-bottom: 20mm;
-                margin-left: 20mm;
-                margin-right: 20mm;
-            }
-            body {
-                margin: 0;
-                -webkit-print-color-adjust: exact;
-            }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
         }
     </style>
 </head>
 <body>
     <h3>Ripa Mei sandi suryadinata 310124023848</h3>
     <h3>Data Barang</h3>
-    <table class="table">
+    
+    <table border="1">
         <thead>
             <tr>
                 <th>Nomor</th>
@@ -44,25 +43,21 @@
                 <td>{{ $d->harga_beli }}</td>
                 <td>{{ $d->harga_jual }}</td>
                 <td>
+                    {{-- 
+                      Catatan: 
+                      Pada metode eksport XLS dengan header HTML ini, tag <img> seringkali 
+                      tidak muncul di Excel (karena Excel tidak bisa meload relative URL 
+                      secara langsung). Lebih baik tampilkan nama filenya saja atau URL lengkapnya.
+                    --}}
                     @if($d->foto)
-                        <a href="{{ asset('uploads/fotoBarang/' . $d->foto) }}" target="_blank">
-                            <img src="{{ asset('uploads/fotoBarang/' . $d->foto) }}" style="width: 100px; height: auto;" />
-                        </a>
+                        {{ $d->foto }}
                     @else
                         No Foto
                     @endif
                 </td>
-            </tr>  {{-- ✅ Fixed: added missing closing </tr> tag --}}
+            </tr>
             @endforeach
         </tbody>
     </table>
-    <script>
-        window.addEventListener('load', function () {
-            window.print();
-        });
-
-        window.addEventListener('afterprint', function () {
-            window.close();
-        });
-    </script>
 </body>
+</html>

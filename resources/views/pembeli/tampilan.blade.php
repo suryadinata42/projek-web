@@ -41,7 +41,7 @@
                   <td>{!! nl2br($d->alamat) !!}</td>
                   <td>{{ $d->kode_pos }}</td>
                   <td>{{ $d->kota }}</td>
-                  <td>{{ $d->tanggal_lahir }}</td>
+                  <td>{{ dateID($d->tanggal_lahir) }}</td>
                   <td>
                      <form id="delete-form-{{ $d->id }}" method="POST" action="{{ route('pembeli.hapus', $d->id) }}">
                         @csrf
